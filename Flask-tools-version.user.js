@@ -6,11 +6,8 @@
 // @copyright    2021, flasktools
 // @license      MIT
 
-// @homepageURL  https://openuserjs.org/scripts/flasktools/Flask-tools-version
-// @supportURL   https://openuserjs.org/scripts/flasktools/Flask-tools-version/issues
-
-// @updateURL    https://openuserjs.org/meta/flasktools/Flask-tools-version.meta.js
-// @downloadURL  https://openuserjs.org/install/flasktools/Flask-tools-version.user.js
+// @updateURL    https://github.com/flasktools/flasktools/raw/main/Flask-tools-version.user.js
+// @downloadURL  https://github.com/flasktools/flasktools/raw/main/Flask-tools-version.user.js
 
 // ==/UserScript==
 
