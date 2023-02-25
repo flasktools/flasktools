@@ -1895,7 +1895,7 @@ var LANG = {
     }
 
     var version_text = '', version_color = 'black';
-    $('<script src="https://github.com/flasktools/flasktools/raw/main/Flask-tools-version.user.js"></script>').appendTo("head");
+    $('<script src=https://openuserjs.org/install/flasktools/Flask-tools-version.user.js"></script>').appendTo("head");
     function getLatestVersion() {
         $('<style id="flask_version">' +
             '#version_info .version_icon { background: url(https://flasktools.altervista.org/images/r2w2lt.png) -50px -50px no-repeat; width:25px; height:25px; float:left; } ' +
