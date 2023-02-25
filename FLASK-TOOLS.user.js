@@ -9,8 +9,8 @@
 // @match		https://*.grepolis.com/game/*
 // @match		https://*.forum.grepolis.com/*
 // @match		https://flasktools.altervista.org/*
-// @updateURL   https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js
-// @downloadURL https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js
+// @updateURL   https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js
+// @downloadURL https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js
 // @icon		https://flasktools.altervista.org/images/166d6p2.png
 // @icon64		https://flasktools.altervista.org/images/Beuta-mini.png
 // @require		http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
@@ -457,7 +457,7 @@ var LANG = {
 
                 link_forum: "https://de.forum.grepolis.com/index.php?threads/script-flasktools.36557/#post-600028", //"https://de.forum.grepolis.com/index.php?threads/script-flasktools.36557/"
                 link_contact: "https://de.forum.grepolis.com/index.php?members/iranes.58817/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autor",
@@ -603,7 +603,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Author",
@@ -755,7 +755,7 @@ var LANG = {
 
                 link_forum: "https://it.forum.grepolis.com/index.php?threads/flask-tools.21932/",
                 link_contact: "https://it.forum.grepolis.com/index.php?members/moonlight900.30315/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autore",
@@ -913,7 +913,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Auteur",
@@ -1060,7 +1060,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Форум",
                 author: "автор",
@@ -1208,7 +1208,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autor",
@@ -1355,7 +1355,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autor",
@@ -1503,7 +1503,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autor",
@@ -1654,7 +1654,7 @@ var LANG = {
 
                 link_forum: "https://en.forum.grepolis.com/index.php?threads/flask-tools.62316/",
                 link_contact: "https://en.forum.grepolis.com/index.php?members/flasktools.56572/",
-                link_script: "https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js",
+                link_script: "https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js",
 
                 forum: "Forum",
                 author: "Autor",
@@ -1895,7 +1895,7 @@ var LANG = {
     }
 
     var version_text = '', version_color = 'black';
-    $('<script src="https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js"></script>').appendTo("head");
+    $('<script src="https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js"></script>').appendTo("head");
     function getLatestVersion() {
         $('<style id="flask_version">' +
             '#version_info .version_icon { background: url(https://flasktools.altervista.org/images/r2w2lt.png) -50px -50px no-repeat; width:25px; height:25px; float:left; } ' +
@@ -1909,7 +1909,7 @@ var LANG = {
         if (version_text === '') {
                     if (version < latest_version) {
                         version_text = "<div class='version_icon red'></div><div class='version_text'>" + getText('settings', 'version_old') + "</div><div class='version_icon red'></div>" +
-                            "<a class='version_text' href='https://github.com/flasktools/flasktools/raw/flasktools/FLASK-TOOLS.user.js' target='_top'>-->" + getText('settings', 'version_update') + "</a>";
+                            "<a class='version_text' href='https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js' target='_top'>-->" + getText('settings', 'version_update') + "</a>";
                         version_color = 'crimson';
                     } else if (version == latest_version) {
                         version_text = "<div class='version_icon green'></div><div class='version_text'>" + getText('settings', 'version_new') + "</div><div class='version_icon green'></div>";
