@@ -6240,7 +6240,7 @@ var LANG = {
                     // DropDown-Button for ratio
                 '<div class="border-left"></div>' +
                 '<div class="border-right"></div>' +
-                '<div class="caption" name="' + percent + '">' + Math.round(percent * 100) + '%</div>' +
+		'<div class="caption" name="' + percent + '">' + (percent == "auto" ? "auto" : `${Math.round(percent * 100)}%`) + '</div>' +
                 '<div class="arrow"></div>' +
                 '</div><span class="rec_count">(' + trade_count + ')</span></div>').appendTo(wndID + ".content");
 
