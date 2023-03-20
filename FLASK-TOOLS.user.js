@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.12
+// @version		7.13
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.12';
+var version = '7.13';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -52,7 +52,6 @@ function loadValue(name, default_val){
 // LOAD DATA
 if(GM && (uw.location.pathname.indexOf("game") >= 0)){
     var WID = uw.Game.world_id, MID = uw.Game.market_id, AID = uw.Game.alliance_id;
-
     //GM_deleteValue(WID + "_bullseyeUnit");
 
     DATA = {
@@ -502,6 +501,7 @@ var LANG = {
                 ubv: ["Einheiten außerhalb der Sicht", 'Neue Tools im Agorà-Fenster wurden verbessert. Dies wird vom Quacktool hinzugefügt'],
                 tti: ["Ressourcen für Festivals tauschen", "Verbesserte eine neue Schaltfläche zum Tauschen der Ressourcen. Dies wird vom Quacktool hinzugefügt"],
                 wwc: ["Taschenrechner", "Teile die Beteiligungsberechnung", "Weiter/Zurück Pfeile zu den beendeten Weltwundern"],
+                htk: ["Tastaturkürzel", "Es verändert Ihr Leben"],
 
                 err: ["Automatische Fehlerberichte senden", "Wenn du diese Option aktivierst, kannst du dabei helfen Fehler zu identifizieren."],
                 her: ["Thrakische Eroberung", "Verkleinerung der Karte der Thrakischen Eroberung."],
@@ -580,6 +580,29 @@ var LANG = {
 				triumph : 'Triumphzüge',
 				theater : 'Theaterspiele'
 			},
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Stadtauswahl',
+                administrator: 'Administrator',
+                captain: 'Kapitän',
+                trade_ov: 'Handeln',
+                command_ov: 'Befehle',
+                recruitment_ov: 'Rekrutierung',
+                troop_ov: 'Truppenübersicht',
+                troops_outside: 'Truppen draußen',
+                building_ov: 'Gebäude',
+                culture_ov: 'Kultur',
+                gods_ov: 'Götter',
+                cave_ov: 'verbirgt die Übersicht',
+                city_groups_ov: 'Städtegruppen',
+                city_list: 'Städteliste',
+                attack_planner: 'Angriffsplaner',
+                farming_villages: 'Bauerndörfer',
+                menu: 'Menu',
+                settings: 'Settings',
+                council: 'Rat der Helden',
+                reservations: 'Reservierungen'
+            },
             town_info: {
 				no_overload : 'Kein überladen',
 				delete : 'Löschen'
@@ -649,6 +672,7 @@ var LANG = {
                 srl: ["Scrollbar Style", 'Improved a new style for the scrollbar. Available on Chrome, opera, safari'],
                 tti: ["Trade resources for festivals", "Improved a new button to trade the resources. This is added by the quacktool"],
                 wwc: ["Calculator", "Share the participation calculation", "Next/previous arrows on the ended wonders of the world"],
+                htk: ["Keyboard shortcuts", "It changes your life"],
                 mod: ["Moding", "Improved the picture of the goddes with your favorite characters"],
 
                 err: ["Send bug reports automatically", "If you activate this option, you can help identify bugs."],
@@ -732,6 +756,29 @@ var LANG = {
 				triumph : 'Victory processions',
 				theater : 'Theater plays'
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'City selection',
+                administrator: 'Administrator',
+                captain: 'Captain',
+                trade_ov: 'Trade',
+                command_ov: 'Commands',
+                recruitment_ov: 'Recruiting',
+                troop_ov: 'Troop overview',
+                troops_outside: 'Troops outside',
+                building_ov: 'Buildings',
+                culture_ov: 'Culture',
+                gods_ov: 'Gods',
+                cave_ov: 'hidesOverview',
+                city_groups_ov: 'City groups',
+                city_list: 'City list',
+                attack_planner: 'Attack planner',
+                farming_villages: 'Farming villages',
+                menu: 'Menu',
+                settings: 'Settings',
+                council: 'Council of Heroes',
+                reservations: 'reservations'
+            },
             town_info: {
                 no_overload : "No overload",
                 delete : "Delete"
@@ -803,6 +850,7 @@ var LANG = {
                 ubv: ["Panoramica truppe esterne", 'Migliorato un nuovo strumento nella finestra di agorà. È aggiunto dal quacktool'],
                 tti: ["Commercio risorse per le feste", 'Inserito un nuovo tasto per commerciare le risorse. È aggiunto dal quacktools'],
                 wwc: ["Calcolatrice", "Condividi il calcolo della partecipazione", "Frecce prossimo/precedente sulle meraviglie del mondo finite"],
+                htk: ["Scorciatoie da tastiera", "Ti cambia la vita"],
                 mod: ["Mod divinità", "Sostituisci le divinità per creare un gioco vario e senza precedenti"],
 
                 err: ["Invia automaticamente il report dei bug", "Se attivi questa opzione, puoi aiutare a identificare i bug."],
@@ -888,6 +936,29 @@ var LANG = {
 				triumph : 'Corteo trionfale',
 				theater : 'Opere teatrali'
 			},
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Selezione città',
+                administrator: 'Amministratore',
+                captain: 'Capitano',
+                trade_ov: 'Commercio',
+                command_ov: 'Ordini',
+                recruitment_ov: 'Reclutamento',
+                troop_ov: 'Panoramica truppe',
+                troops_outside: 'Truppe esterne',
+                building_ov: 'Edifici',
+                culture_ov: 'Cultura',
+                gods_ov: 'Divinità',
+                cave_ov: 'Caverne',
+                city_groups_ov: 'Gruppi città',
+                city_list: 'Lista città',
+                attack_planner: 'Pianificatore',
+                farming_villages: 'Villaggi rurali',
+                menu: 'Menu',
+                settings: 'Impostanzioni',
+                council: 'Consiglio degli Eroi',
+                reservations: 'Prenotazioni'
+            },
             town_info: {
                 no_overload : "Nessun sovraccarico",
                 delete : "Cancella",
@@ -958,6 +1029,7 @@ var LANG = {
                 ubv: ["Unités au-delà de la aperçu", 'Amélioration de un nouvel outil sur la fenêtre agorà. Ceci est ajouté par le quacktool'],
                 tti: ["Échanger des ressources pour des festivals", "Amélioration d'un nouveau bouton pour échanger les ressources. Ceci est ajouté par le quacktool"],
                 wwc: ["Calculatrice", "Partager le calcul de la participation", "Flèches suivante/précédente sur les merveilles du monde terminées"],
+                htk: ["Raccourcis clavier", "Ça change la vie"],
 
                 err: ["Envoyer des rapports de bogues automatiquement", "Si vous activez cette option, vous pouvez aider à identifier les bugs."],
                 // Town icons
@@ -1039,6 +1111,29 @@ var LANG = {
 				no_overload : 'sans surcharge',
 				delete : 'Effacer',
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Sélection de la ville',
+                administrator: 'Administrateur',
+                captain: 'Capitaine',
+                trade_ov: 'Commerce',
+                command_ov: 'Commandes',
+                recruitment_ov: 'Recrutement',
+                troop_ov: 'Aperçu des troupes',
+                troops_outside: "Troupes à l'extérieur",
+                building_ov: 'Bâtiments',
+                culture_ov: 'Culture',
+                gods_ov: 'Dieux',
+                cave_ov: "Vue d'ensemble",
+                city_groups_ov: 'Groupes de villes',
+                city_list: 'Liste des villes',
+                attack_planner: "Planificateur d'attaque",
+                farming_villages: 'Villages agricoles',
+                menu: 'Menu',
+                settings: 'Paramètres',
+                council: 'Conseil des héros',
+                reservations: 'Réservations'
+            },
             buttons: {
                 sav: "Sauver", ins: "Insertion", res: "Remettre"
             }
@@ -1105,6 +1200,7 @@ var LANG = {
                 ubv: ["Единицы вне поля зрения", 'Улучшены новые инструменты в окне agorà. Это добавлено шарлатаном'],
                 tti: ["Обмен ресурсов на фестивали", 'Улучшена новая кнопка для обмена ресурсами. Это добавлено шарлатаном'],
                 wwc: ["calculator", "Share the participation calculation", "Next / previous arrows on the ended wonders of the world"],
+                htk: ["Сочетания клавиш", "Это меняет вашу жизнь"],
 
                 err: ["Отправить сообщения об ошибках автоматически", "Если вы включите эту опцию, вы можете помочь идентифицировать ошибки"],
                 // Town icons
@@ -1187,6 +1283,29 @@ var LANG = {
 				no_overload : 'Нет перезагрузки',
 				delete : 'Удалить',
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Выбор города',
+                administrator: 'Администратор',
+                captain: 'Капитан',
+                trade_ov: 'Торговля',
+                command_ov: 'Команды',
+                recruitment_ov: 'Рекрутинг',
+                troop_ov: 'Обзор войск',
+                troops_outside: 'Войска снаружи',
+                building_ov: 'Здания',
+                culture_ov: 'Культура',
+                gods_ov: 'Боги',
+                cave_ov: 'скрывает Обзор',
+                city_groups_ov: 'Городские группы',
+                city_list: 'Список городов',
+                attack_planner: 'Планировщик атак',
+                farming_villages: 'Фермерские деревни',
+                menu: 'Menu',
+                settings: 'Настройки',
+                council: 'Совет героев',
+                reservations: 'оговорки'
+            },
             buttons: {
                 sav: "Сохраниить", ins: "Вставка", res: "Сброс"
             }
@@ -1253,6 +1372,7 @@ var LANG = {
                 ubv: ["Jednostki poza zasięgiem wzroku", 'Poprawione nowe narzędzia w oknie agory. Jest to dodawane przez quacktool'],
                 tti: ["Wymień surowce na festiwale", 'Ulepszono nowy przycisk do wymiany zasobów. Jest to dodawane przez quacktool'],
                 wwc: ["Kalkulator", "Udostępnij kalkulację udziału", "Następne/poprzednie strzałki na zakończonych cudach świata"],
+                htk: ["Skróty klawiszowe", "To zmienia Twoje życie"],
 
                 err: ["Automatycznie wysyłać raporty o błędach", "Jeśli włączysz tę opcję, możesz pomóc zidentyfikować błędy"],
                 // Town icons
@@ -1334,6 +1454,29 @@ var LANG = {
 				no_overload : 'Wybierz i napełnij łódki',
 				delete : 'Wyczyść',
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Wybór miasta',
+                administrator: 'Administrator',
+                captain: 'Kapitan',
+                trade_ov: 'Handel',
+                command_ov: 'Polecenia',
+                recruitment_ov: 'Rekrutacyjny',
+                troop_ov: 'Przegląd wojsk',
+                troops_outside: 'Wojska na zewnątrz',
+                building_ov: 'Budynki',
+                culture_ov: 'Kultura',
+                gods_ov: 'Bogowie',
+                cave_ov: 'ukrywa Przegląd',
+                city_groups_ov: 'Grupy miejskie',
+                city_list: 'Lista miast',
+                attack_planner: 'Planista ataku',
+                farming_villages: 'Wsie rolnicze',
+                menu: 'Menu',
+                settings: 'Ustawienia',
+                council: 'Rada Bohaterów',
+                reservations: 'Rezerwacje'
+            },
             buttons: {
                 sav: "Zapisz", ins: "Wstaw", res: "Anuluj"
             }
@@ -1400,6 +1543,7 @@ var LANG = {
                 ubv: ["Unidades más allá de la vista", 'Mejora de nuevas herramientas en la ventana de agorà. Esto es agregado por quacktool'],
                 tti: ["Intercambia recursos por festivales", 'Se mejoró un nuevo botón para intercambiar los recursos. Esto es agregado por el quacktool'],
                 wwc: ["Calculadora", "Comparte el cálculo de participación", "Flechas siguientes/anteriores sobre las maravillas del mundo terminadas"],
+                htk: ["Atajos de teclado", "Te cambia la vida"],
 
                 err: ["Enviar informes de errores automáticamente", "Si se activa esta opción, puede ayudar a identificar errores."],
                 // Town icons
@@ -1481,6 +1625,29 @@ var LANG = {
 				no_overload : 'No cargar',
 				delete : 'Borrar',
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Selección de ciudad',
+                administrator: 'Administrador',
+                captain: 'Capitán',
+                trade_ov: 'Comercio',
+                command_ov: 'Comandos',
+                recruitment_ov: 'Reclutamiento',
+                troop_ov: 'Descripción de la tropa',
+                troops_outside: 'Tropas afuera',
+                building_ov: 'Edificios',
+                culture_ov: 'Cultura',
+                gods_ov: 'Dioses',
+                cave_ov: 'Vista oculta',
+                city_groups_ov: 'Grupos de ciudades',
+                city_list: 'Lista de ciudades',
+                attack_planner: 'Planificador de ataques',
+                farming_villages: 'Pueblos agrícolas',
+                menu: 'Menu',
+                settings: 'Ajustes',
+                council: 'Consejo de Héroes',
+                reservations: 'reservas'
+            },
             buttons: {
                 sav: "Guardar", ins: "Insertar", res: "Reinicio"
             }
@@ -1548,6 +1715,7 @@ var LANG = {
                 ubv: ["Unidades além da vista", 'Melhoradas novas ferramentas na janela agorà. Isto é adicionado pelo quacktool'],
                 tti: ["Trocar recursos para festivais", 'Melhorado um novo botão para trocar os recursos. Isso é adicionado pelo quacktool'],
                 wwc: ["Calculadora", "Compartilhe o cálculo de participação", "Setas seguintes/anteriores nas maravilhas do mundo acabadas"],
+                htk: ["Atalhos de teclado", "Isso muda sua vida"],
 
                 err: ["Enviar automaticamente relatórios de erros", "Se você ativar essa opção, você pode ajudar a identificar erros."],
                 her: ["Conquista Thracian", "Redução de tamanho do mapa da conquista Thracian."],
@@ -1632,6 +1800,29 @@ var LANG = {
 				no_overload : 'Sem sobrecarga',
 				delete : 'Excluir',
             },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Seleção de cidade',
+                administrator: 'Administrador',
+                captain: 'Capitão',
+                trade_ov: 'Troca',
+                command_ov: 'Comandos',
+                recruitment_ov: 'Recrutamento',
+                troop_ov: 'Visão geral da tropa',
+                troops_outside: 'Tropas fora',
+                building_ov: 'Edifícios',
+                culture_ov: 'Cultura',
+                gods_ov: 'Deuses',
+                cave_ov: 'Ocultar visão geral',
+                city_groups_ov: 'Grupos de cidades',
+                city_list: 'Lista de cidades',
+                attack_planner: 'Planejador de ataque',
+                farming_villages: 'Aldeias agrícolas',
+                menu: 'Menu',
+                settings: 'Configurações',
+                council: 'Conselho de heróis',
+                reservations: 'Reservas'
+            },
             buttons: {
                 sav: "Salvar", ins: "Inserir", res: "Resetar"
             }
@@ -1698,6 +1889,7 @@ var LANG = {
                 ubv: ["Jednotky mimo dohled", 'Vylepšené nové nástroje v okně agorà. Toto je přidáno quacktool'],
                 tti: ["Trade resources for festivals", 'Vylepšeno nové tlačítko pro obchodování se zdroji. Toto je přidává quacktool'],
                 wwc: ["Kalkulačka", "Podělte se o výpočet účasti", "Další/předchozí šipky na ukončených divech světa"],
+                htk: ["Klávesové zkratky", "Změní vám to život"],
 
                 err: ["Hlásit chyby automaticky", "Pokud aktivuješ tuto možnost,pomůžeš nám identifikovat chyby."],
                 her: ["Thrácké dobývání", "Redukuje mapy Thráckého dobývání."],
@@ -1781,6 +1973,29 @@ var LANG = {
             town_info: {
 				no_overload : 'Bez přeložení',
 				delete : 'Smazat',
+            },
+            hotkeys: {
+                hotkeys: 'Hotkeys',
+                city_select: 'Výběr města',
+                administrator: 'Správce',
+                captain: 'Kapitán',
+                trade_ov: 'Obchod',
+                command_ov: 'Příkazy',
+                recruitment_ov: 'Nábor',
+                troop_ov: 'Přehled vojska',
+                troops_outside: 'Vojáci venku',
+                building_ov: 'Budovy',
+                culture_ov: 'Kultura',
+                gods_ov: 'Bohové',
+                cave_ov: 'Přehled skryje',
+                city_groups_ov: 'Městské skupiny',
+                city_list: 'Seznam měst',
+                attack_planner: 'Plánovač útoků',
+                farming_villages: 'Zemědělské vesnice',
+                menu: 'Menu',
+                settings: 'Nastavení',
+                council: 'Rada hrdinů',
+                reservations: 'Rezervace'
             },
             buttons: {
                 sav: "Uložit", ins: "Vložit", res: "Resetovat"
@@ -1871,6 +2086,7 @@ var LANG = {
         ubv: true, // Units beyod view
         srl: true, // Scrollbar Style
         tti: true, // Town trade
+        htk: true, // hotkeys
         mod: false, // Mod
         wwc: true, // World wonder counter
         wwr: false, // World wonder ranking
@@ -1956,6 +2172,7 @@ var LANG = {
             $('#flask_bg_medusa').css({display: "block"});
 
             if (!$('#flask_settings').get(0)) {
+
                 // Styles
                 $('<style id="flask_settings_style">' +
                         // Chrome Scroollbar Style
@@ -2187,6 +2404,10 @@ var LANG = {
                     '<td><img src="https://flasktools.altervista.org/images/game/settings/view/cultureoverview.png" alt="" /></td>' +
                     '<td><div id="cov" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "cov")[0] + '</div></div>' +
                     '<p>' + getText("options", "cov")[1] + '</p></td>' +
+                    '</tr><tr>' +
+                    '<td><img src="https://flasktools.altervista.org/images/hotkeys.png" alt="" /></td>' +
+                    '<td><div id="htk" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "htk")[0] + '</div></div>' +
+                    '<p>' + getText("options", "htk")[1] + '</p><br></td>' +
                     '</tr><tr>' +
                     '<td><img src="https://flasktools.altervista.org/images/game/settings/view/unitesbeyodview.png" alt="" /></td>' +
                     '<td><div id="ubv" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "ubv")[0] + '</div></div>' +
@@ -2450,6 +2671,9 @@ var LANG = {
                 break;
             case "tti":
                 FEATURE = TownTradeImprovement;
+                break;
+            case "htk":
+                FEATURE = Hotkeys;
                 break;
             case "mod":
                 FEATURE = Mod;
@@ -2835,6 +3059,11 @@ var LANG = {
                     if(DATA.options.way) {
                         setTimeout(function () {
                             Duration.activate();
+                        }, 0);
+                    }
+                    if(DATA.options.htk) {
+                        setTimeout(function () {
+                            Hotkeys.activate();
                         }, 0);
                     }
                     if (DATA.options.mds) {
@@ -9774,7 +10003,7 @@ var LANG = {
                 flask.wnd.find(".flask_trade").click(function () {
                     var id = this.id.split("_");
                     var res = getRes(id[1], id[2], id[3]);
-                    if (res.needed - res.amounts.curr3 <= 0 || res.caption.curr  <= 0 || res.amounts.curr3 > 0) {
+                    if (res.needed - res.amounts.curr3 <= 0 || res.caption.curr <= 0 || res.amounts.curr3 > 0) {
                         res.send = 0;
                     } else if (res.needed - res.amounts.curr3 > res.caption.curr) {
                         res.send = res.caption.curr + res.amounts.curr3
@@ -9795,6 +10024,139 @@ var LANG = {
         },
         deactivate: function () {
             $('#flask_improvement_trade').remove();
+        },
+    };
+
+    /*******************************************************************************************************************************
+     * Hotkeys
+     *******************************************************************************************************************************/
+
+    var Hotkeys = {
+        ImagesHotkeys: {
+            key: 'https://flasktools.altervista.org/images/dj4uootz.jpg',
+            city_select: 'https://flasktools.altervista.org/images/nzhgrbzm.png',
+            administrator: 'https://flasktools.altervista.org/images/j4kvrnok.png',
+            captain: 'https://flasktools.altervista.org/images/8r8ty3md.png',
+            menu: 'https://flasktools.altervista.org/images/giiagnrp.png'
+        },
+        activate: () => {
+            $('.toolbar_activities .right').before('<a id="BTN_HK" style="z-index: 6; top: -27px; left: 24px; float: right; position: relative;"><img src="https://flasktools.altervista.org/images/hotkeys.png" style="float:left; border-width: 0px"></a></a>');
+
+            $('<style id="flask_hotkeys_style">.town_name_area {z-index: 6}</style>').appendTo('head');
+            if ($('#gsa_shortcutOverview').is(':visible')) {
+                if ($('.temple_commands').is(':visible')) { $('<style id="MH_attsup_style">#MH_attsup {left:422px !important;}</style>').appendTo('head'); }
+                else { $('<style id="MH_attsup_style">#MH_attsup {left:422px !important;}</style>').appendTo('head'); }
+            }
+            else {
+                if ($('.temple_commands').is(':visible')) { $('<style id="MH_attsup_style">#MH_attsup {left:413px !important;}</style>').appendTo('head'); }
+                else { $('<style id="MH_attsup_style">#MH_attsup {left:384px !important;}</style>').appendTo('head'); }
+            }
+            var mousePopupHTML = '<div id="flasktest" style="max-width: 205px; margin: 0 3px -10px 3px; border-right: 1px solid #B48F45; float: left; display:inline-block"><span style="margin-bottom:3px; display:inline-block"><img id="flask_icon" src="https://flasktools.altervista.org/images/166d6p2.png"></img><b>' + getText("hotkeys", "hotkeys") + ':</b></span>';
+            var mousePopupHTMLTEST = '</div><div style="max-width: 164px; margin:3px; float: left; display:inline-block"><span style="margin:8px; display:inline-block"></span>';
+
+            var mousePopupArray = {};
+            var mousePopupArrayTEST = {};
+
+            var Text_premium = uw.DM.getl10n("layout").premium_button.premium_menu;
+            var Text_layout = uw.DM.getl10n("layout").main_menu.items;
+
+            mousePopupArray[getText("hotkeys", "menu")] = [
+                [Hotkeys.ImagesHotkeys.menu],
+                ["⇧", getText("hotkeys", "reservations")],
+            ];
+            mousePopupArrayTEST[uw.DM.getl10n("advisor").curator] = [
+                [Hotkeys.ImagesHotkeys.administrator],
+                ["Q", Text_premium.trade_overview],
+                ["W", Text_premium.command_overview],
+                ["E", Text_premium.recruit_overview],
+                ["R", Text_premium.unit_overview],
+                ["T", Text_premium.outer_units],
+                ["Y", Text_premium.building_overview],
+                ["U", Text_premium.culture_overview],
+                ["I", Text_premium.gods_overview],
+                ["O", Text_premium.hides_overview],
+                ["P", Text_premium.town_group_overview],
+                [(MID == 'de' || MID == 'it') ? "'" : "-", Text_premium.towns_overview]
+            ];
+            mousePopupArray[getText("hotkeys", "captain")] = [
+                [Hotkeys.ImagesHotkeys.captain],
+                [(MID == 'de') ? "´" : "B", Text_premium.attack_planer],
+                ["X", Text_premium.farm_town_overview]
+            ];
+            mousePopupArray.Agora = [
+                [Hotkeys.ImagesHotkeys.city_select],
+                ["G", uw.DM.getl10n("place").tabs[0]],
+                ["H", Text_premium.outer_units],
+                ["J", getText("options", "sim")[0]],
+                ["K", Text_premium.culture_overview]
+            ];
+            $.each(mousePopupArray, function (a, b) {
+                mousePopupHTML += '<p/><span style="margin-bottom:-11px;margin-top:-8px;border-bottom:1px solid #B48F45; width:100%;display:block"><span style="display:inline-block;height:17px;width:17px;vertical-align:middle;margin-right:5px;background-image:url(' + b[0] + ')"></span><span style="display:inline-block;height:17px;vertical-align:middle;margin-right:5px;">' + a + ':</span></span><br/>';
+                $.each(b, function (c, d) {
+                    if (c != 0) mousePopupHTML += '<span style="display:inline-block;height:17px;width:17px;text-align:center;vertical-align:middle;margin-right:5px;background-image:url(' + Hotkeys.ImagesHotkeys.key + ')"><span style="display:block;margin-top:-1px">' + d[0] + '</span></span><span style="display:inline-block;margin-bottom:1px;height:17px;vertical-align:middle;margin-right:5px;">' + d[1] + '</span><br/>';
+                });
+            });
+            $.each(mousePopupArrayTEST, function (a, b) {
+                mousePopupHTMLTEST += '<p/><span style="margin-bottom:-11px;margin-top:-8px;border-bottom:1px solid #B48F45; width:100%;display:block"><span style="display:inline-block;height:17px;width:17px;vertical-align:middle;margin-right:5px;background-image:url(' + b[0] + ')"></span><span style="display:inline-block;height:17px;vertical-align:middle">' + a + ':</span></span><br/>';
+                $.each(b, function (c, d) {
+                    if (c != 0) mousePopupHTMLTEST += '<span style="display:inline-block;height:17px;width:17px;text-align:center;vertical-align:middle;margin-right:5px;background-image:url(' + Hotkeys.ImagesHotkeys.key + ')"><span style="display:block;margin-top:-1px">' + d[0] + '</span></span><span style="display:inline-block;margin-bottom:1px;height:17px;vertical-align:middle">' + d[1] + '</span><br/>';
+                });
+            });
+            $('#BTN_HK').mousePopup(new uw.MousePopup(mousePopupHTML + mousePopupHTMLTEST));
+
+
+            $("#BTN_HK").click(() => Hotkeys.add());
+            Hotkeys.add();
+        },
+        add: () => {
+            try {
+                document.onkeydown = function (e) {
+                    e = e || window.event;
+                    var target = e.target.tagName.toLowerCase();
+                    function letter(letter) { return e.key == letter.toLowerCase() || e.key == letter.toUpperCase() }
+
+                    // Si pas dans une case texte + détection du CTRL pressé ou non
+                    if (!$(e.target).is('textarea') && !$(e.target).is('input') && !e.ctrlKey && !e.metaKey && !e.altKey && DATA.options.htk) {
+                        // Flèches directionnelles
+                        // Agora !!!
+                        if (letter("k")) uw.PlaceWindowFactory.openPlaceWindow('culture');
+                        // simulator
+                        if (letter("j")) uw.PlaceWindowFactory.openPlaceWindow('simulator', open);
+                        // Troupes en dehors
+                        if (letter("h")) uw.PlaceWindowFactory.openPlaceWindow('units_beyond');
+                        // Défense (Agora)
+                        if (letter("g")) uw.PlaceWindowFactory.openPlaceWindow('index');
+                        // Remparts
+                        if (letter("m")) uw.BuildingWindowFactory.open('wall');
+                        // RACOURCI Administrateur
+                        if (letter("q")) uw.TownOverviewWindowFactory.openTradeOverview();
+                        if (letter("w")) uw.TownOverviewWindowFactory.openCommandOverview();
+                        if (letter("e")) uw.TownOverviewWindowFactory.openMassRecruitOverview();
+                        if (letter("r")) uw.TownOverviewWindowFactory.openUnitsOverview();
+                        if (letter("t")) uw.TownOverviewWindowFactory.openOuterUnitsOverview();
+                        if (letter("y")) uw.TownOverviewWindowFactory.openBuildingsOverview();
+                        if (letter("u")) uw.TownOverviewWindowFactory.openCultureOverview();
+                        if (letter("i")) uw.TownOverviewWindowFactory.openGodsOverview();
+                        if (letter("o")) uw.TownOverviewWindowFactory.openHidesOverview();
+                        if (letter("p")) uw.TownOverviewWindowFactory.openTownGroupOverview();
+                        if (e.key == "²" || e.code == "Minus" || e.keyCode == "63" || e.key == "-") uw.TownOverviewWindowFactory.openTownsOverview();
+                        // Villages de paysans
+                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
+                        // Plannificateur
+                        if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("b"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
+                        // Outil de réservation
+                        if (e.code == "ShiftRight") uw.hOpenWindow.openReservationList(); void (0);
+                        // Council of heroes
+                        if (letter("h") && $('.ui_heroes_overview_container').is(':visible')) uw.HeroesWindowFactory.openHeroesWindow();
+                        // FLASK-Tools settings
+                        if (letter("d")) openSettings();
+                    }
+                }
+            } catch (error) { errorHandling(error, "hotkeys"); }
+        },
+        deactivate: () => {
+            $('#BTN_HK').remove();
+            $('#MH_attsup_style').remove();
         },
     };
 
