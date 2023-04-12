@@ -6423,8 +6423,13 @@ var LANG = {
     var RecruitingTrade = {
         activate: function () {
             $('<style id="flask_style_recruiting_trade" type="text/css">' +
-                '.resource_selector { width:60px; } ' +
-	      
+                '#trade_tab #trade .resource_selector { width:60px; margin-left: 40px; } ' +
+                '.resource_selector .icon.wood {margin-right:-3px;}' +
+                '.resource_selector .icon.stone {margin-right:-3px;}' +
+                '.resource_selector .icon.iron {margin-right:-3px;}' +
+
+                '#unit_order_booty {left:50px;}' +
+
                 '#flask_recruiting_trade .option_s { filter:grayscale(100%); -webkit-filter:grayscale(100%); margin:0px; cursor:pointer; } ' +
                 '#flask_recruiting_trade .option_s:hover { filter:unset !important; -webkit-filter:unset !important; } ' +
                 '#flask_recruiting_trade .select_rec_unit .sel { filter:sepia(100%); -webkit-filter:sepia(100%); } ' +
@@ -6444,10 +6449,10 @@ var LANG = {
 
                 '#trade_tab .content { height:320px;  } ' +
 
-                '#flask_recruiting_trade .rec_count { position:absolute; top:25px; } ' +
+                '#flask_recruiting_trade .rec_count { position:absolute; top:25px; left:-15px } ' +
 
-                '#flask_recruiting_trade .drop_rec_unit { position:absolute; display:block; width:50px; overflow:visible; } ' +
-                '#flask_recruiting_trade .drop_rec_perc { position:absolute; display:block; width:55px; left:49px; color:#000; } ' +
+                '#flask_recruiting_trade .drop_rec_unit { position:absolute; display:block; width:50px; overflow:visible; left:-18px;} ' +
+                '#flask_recruiting_trade .drop_rec_perc { position:absolute; display:block; width:55px; left:31px; color:#000; } ' +
 
                 '</style>').appendTo('head');
         },
@@ -6749,7 +6754,7 @@ var LANG = {
         if (ww) {
             $(wndID + '.btn_trade').css({left: '678px', top: '154px'});
         } else {
-            $(wndID + '.btn_trade').css({left: '336px', top: '135px'});
+            $(wndID + '.btn_trade').css({left: '333px', top: '128px'});
         }
 
         $(wndID + '.mid').css({minWidth: '26px'});
