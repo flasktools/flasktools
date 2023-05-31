@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.14
+// @version		7.15
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.14';
+var version = '7.15';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -6428,7 +6428,7 @@ var LANG = {
                 '.resource_selector .icon.stone {margin-right:-3px;}' +
                 '.resource_selector .icon.iron {margin-right:-3px;}' +
 
-                '#unit_order_booty {left:50px;}' +
+                '#trade_tab #unit_order_booty {left:50px;}' +
 
                 '#flask_recruiting_trade .option_s { filter:grayscale(100%); -webkit-filter:grayscale(100%); margin:0px; cursor:pointer; } ' +
                 '#flask_recruiting_trade .option_s:hover { filter:unset !important; -webkit-filter:unset !important; } ' +
@@ -6484,6 +6484,7 @@ var LANG = {
                 '<div class="option_s unit index_unit unit_icon40x40 attack_ship" name="FS"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 bireme" name="BI"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 trireme" name="TR"></div>' +
+                '<div class="option_s unit index_unit unit_icon40x40 small_transporter" name="ST"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 sword" name="SK"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 slinger" name="SL"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 archer" name="BS"></div>' +
@@ -6491,6 +6492,7 @@ var LANG = {
                 '<div class="option_s unit index_unit unit_icon40x40 rider" name="RE"></div>' +
                 '<div class="option_s unit index_unit unit_icon40x40 chariot" name="SW"></div>' +
                 '<div class="option_s unit index_unit place_image wall_level" name="WA"></div>' +
+                '<div class="option_s unit index_unit research_icon research espionage" name="IR" style="bottom: 47px;transform: scale(0.8);left: 37px;"></div>' +
                 '</div></div>').appendTo(wndID + ".rec_trade");
             $('<div class="select_rec_perc dropdown-list default inactive">' +
                 '<div class="item-list">' +
@@ -6585,13 +6587,15 @@ var LANG = {
                 FS: {w: 1, s: 0.2308, i: 0.6154},
                 BI: {w: 1, s: 0.8750, i: 0.2250},
                 TR: {w: 1, s: 0.65, i: 0.65},
+                ST: {w: 1, s: 0, i: 0.5},
                 SL: {w: 0.55, s: 1, i: 0.4},
                 RE: {w: 0.6666, s: 0.3333, i: 1},
                 SK: {w: 1, s: 0, i: 0.8947},
                 HO: {w: 0, s: 0.5, i: 1},
                 BS: {w: 1, s: 0, i: 0.6250},
                 SW: {w: 0.4545, s: 1, i: 0.7273},
-                WA: {w: 0, s: 1, i: 0.70}
+                WA: {w: 0, s: 1, i: 0.70},
+                IR: {w: 0, s: 0, i: 1}
             };
 
 
