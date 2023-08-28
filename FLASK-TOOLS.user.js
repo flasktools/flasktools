@@ -3780,6 +3780,7 @@ var LANG = {
             $('#flask_townicons_field').remove();
 
             TownPopup.deactivate();
+	    $.Observer(uw.GameEvents.town.town_switch).unsubscribe("town_switch_icon")
         },
         activate: function () {
             try {
@@ -3859,10 +3860,14 @@ var LANG = {
                 });
 
                 $('#town_icon .select_town_icon [name="' + (manuTownTypes[uw.Game.townId] || (autoTownTypes[uw.Game.townId] ? "auto" : "" )) + '"]').addClass("sel");
-
+		$.Observer(uw.GameEvents.town.town_switch).subscribe("town_switch_icon", this.switchTown)
+		    
             } catch (error) {
                 errorHandling(error, "addTownIcon");
             }
+        },
+        switchTown: function() {
+            TownIcons.changeTownIcon();
         },
         changeTownIcon: function () {
             var townType = (manuTownTypes[uw.Game.townId] || ((autoTownTypes[uw.Game.townId] || "no")));
