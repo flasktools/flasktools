@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.15
+// @version		7.16
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.15';
+var version = '7.16';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -6432,6 +6432,9 @@ var LANG = {
                 '.resource_selector .icon.wood {margin-right:-3px;}' +
                 '.resource_selector .icon.stone {margin-right:-3px;}' +
                 '.resource_selector .icon.iron {margin-right:-3px;}' +
+                '.resource_selector #trade_type_wood {margin-left:5px;}' +
+                '.resource_selector #trade_type_stone {margin-left:5px;}' +
+                '.resource_selector #trade_type_iron {margin-left:5px;}' +
 
                 '#trade_tab #unit_order_booty {left:50px;}' +
 
@@ -10094,7 +10097,7 @@ var LANG = {
             ];
             mousePopupArray[getText("hotkeys", "captain")] = [
                 [Hotkeys.ImagesHotkeys.captain],
-                [(MID == 'de') ? "´" : "B", Text_premium.attack_planer],
+                [(MID == 'de') ? "´" : "Z", Text_premium.attack_planer],
                 ["X", Text_premium.farm_town_overview]
             ];
             mousePopupArray.Agora = [
@@ -10157,7 +10160,7 @@ var LANG = {
                         // Villages de paysans
                         if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
                         // Plannificateur
-                        if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("b"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
+                        if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("z"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
                         // Outil de réservation
                         if (e.code == "ShiftRight") uw.hOpenWindow.openReservationList(); void (0);
                         // Council of heroes
