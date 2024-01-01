@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.17
+// @version		7.18
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -9373,7 +9373,7 @@ var LANG = {
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_2.gif">'+
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_0.gif">'+
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_2.gif">'+
-                    '<img src="https://flasktools.altervista.org/images/smileys/sign2_3.gif">'+
+                    '<img src="https://flasktools.altervista.org/images/smileys/sign2_4.gif">'+
                     '</div></a>').appendTo('#ui_box');
 
                 var flaskNewYear = $('#flask_newYear');
