@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.18
+// @version		7.19
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.18';
+var version = '7.19';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -8398,17 +8398,17 @@ var LANG = {
                         }
                     }, function () { $('#flask_plusmenuRecruits').remove(); }
                 );
-                /*$("#toolbar_activity_commands_list").hover(
+                $("#toolbar_activity_commands_list .sandy-box").hover(
                 function () {
                 if ($("#flask_plusmenuCommands").length == 0) {
-                    $("#toolbar_activity_commands_list").append('<div id="flask_plusmenuCommands" class="flask_plusmenu"><div id="flask_plusdraghandleCommands" class="flask_plusdraghandle"></div><a class="flask_plusback"></a></div>');
+                    $("#toolbar_activity_commands_list .sandy-box").append('<div id="flask_plusmenuCommands" class="flask_plusmenu"><div id="flask_plusdraghandleCommands" class="flask_plusdraghandle"></div><a class="flask_plusback"></a></div>');
                     $('#flask_plusmenuCommands .flask_plusback').click(() => {
                         flask_plus_destroy("flask_plusmenuCommands");
                     });
                 }
             }, function () {
                 $('#flask_plusmenuCommands').remove();
-            });*/
+            });
                 $("#toolbar_activity_trades_list").hover(
                     function () {
                         if ($("#flask_plusmenuTrades").length == 0) {
@@ -8437,6 +8437,8 @@ var LANG = {
                     '.flask_plusback {right:-18px;margin-top:-1px;width:16px;height:12px;position:absolute;background:url(https://flasktools.altervista.org/images/plusback.png)}' +
                     '#toolbar_activity_recruits_list {min-width: 113px;}' +
                     '.dropdown-list .item_no_results, .dropdown-list.ui-draggable>div {cursor:text!important;}' +
+                    '#toolbar_activity_commands_list .unit_movements .details_wrapper, #toolbar_activity_commands_list .unit_movements .icon { visibility: visible }' +
+                    '#toolbar_activity_commands_list .cancel { display: none !important; }' +
                     '</style>').appendTo('head');
 
                 $('#toolbar_activity_recruits_list').draggable({
@@ -8451,18 +8453,18 @@ var LANG = {
                         $('<style id="flask_plusmenuRecruitsSTYLE" type="text/css">#toolbar_activity_recruits_list {left: ' + flask_position.left + 'px !important;top: ' + flask_position.top + 'px !important}</style>').appendTo('head');
                     }
                 });
-                /*$('#toolbar_activity_commands_list').draggable({
-                cursor : "move",
-                handle : ".flask_plusdraghandle",
-                start : function () {
-                    $("#flask_plusmenuCommandsSTYLE").remove();
-                    $('#toolbar_activity_commands_list').addClass("displayImp");
-                },
-                stop : function () {
-                    var flask_position = $('#toolbar_activity_commands_list').position();
-                    $('<style id="flask_plusmenuCommandsSTYLE" type="text/css">#toolbar_activity_commands_list {left: ' + flask_position.left + 'px !important;top: ' + flask_position.top + 'px !important}</style>').appendTo('head');
-                }
-            });*/
+                $('#toolbar_activity_commands_list.fast').draggable({
+                    cursor : "move",
+                    handle : ".flask_plusdraghandle",
+                    start : function () {
+                        $("#flask_plusmenuCommandsSTYLE").remove();
+                        $('#toolbar_activity_commands_list.fast').addClass("displayImp");
+                    },
+                    stop: function () {
+                        var flask_position = $('#toolbar_activity_commands_list.fast').position();
+                        $('<style id="flask_plusmenuCommandsSTYLE" type="text/css">#toolbar_activity_commands_list.fast {left: ' + flask_position.left + 'px !important;top: ' + flask_position.top + 'px !important}</style>').appendTo('head');
+                    }
+                });
                 $('#toolbar_activity_trades_list').draggable({
                     cursor: "move",
                     handle: ".flask_plusdraghandle",
@@ -8489,19 +8491,23 @@ var LANG = {
                 });
 
                 function flask_plus_destroy(flaskJQselector) {
-                    /*if (flaskJQselector == "flask_plusmenuCommands") {
-                    $('#toolbar_activity_commands_list').hide();
-                    $('#toolbar_activity_commands_list').on("mouseleave", function () {
-                        $('#toolbar_activity_commands_list').hide();
-                    });
-                    $('#toolbar_activity_recruits, #toolbar_activity_trades').on("mouseenter", function () {
-                        $('#toolbar_activity_commands_list').hide();
-                    });
-                }*/
-                    $("#" + flaskJQselector).parent().removeClass("displayImp");
+                    if (flaskJQselector == "flask_plusmenuCommands") {
+                        $("#" + flaskJQselector).parent().parent().removeClass("displayImp");
+                        $('#toolbar_activity_commands_list').removeClass("flask_commands");
+                        $('<style id="flask_plusmenuCommandsSTYLE" type="text/css">#toolbar_activity_commands_list .sandy-box {left:initial !important; top:initial !important; }</style>').appendTo('head');
+                        clearTimeout(ActivityBoxes.timeout);
+                        ActivityBoxes.timeout = null;
+                        $('#toolbar_activity_commands_list .cancel').click();
+                    }
+                    else $("#" + flaskJQselector).parent().removeClass("displayImp");
                     $("#" + flaskJQselector + "STYLE").remove();
                 }
             } catch (error) { errorHandling(error, "ActivityBoxes"); }
+        },
+        add: () => {
+            ActivityBoxes.timeout = setInterval(() => {
+                $("#toolbar_activity_commands").trigger("mouseenter");
+            }, 1000);
         },
         deactivate: function() {// toolbar_activity_temple_commands
             $('#flask_plusmenustyle').remove();
@@ -8509,8 +8515,8 @@ var LANG = {
             $('#flask_plusmenuRecruits').remove();
             $("#flask_plusmenuRecruitsSTYLE").remove();
 
-            //$('#flask_plusmenuCommands').remove();
-            //$("#flask_plusmenuCommandsSTYLE").remove();
+            $('#flask_plusmenuCommands').remove();
+            $("#flask_plusmenuCommandsSTYLE").remove();
 
             $('#flask_plusmenuTrades').remove();
             $('#flask_plusmenuTradesSTYLE').remove();
@@ -8518,20 +8524,9 @@ var LANG = {
             $('#flask_plusmenuTemple_commands').remove();
             $("#flask_plusmenuTemple_commandsSTYLE").remove();
 
-            $('#toolbar_activity_recruits_list').click(() => {
-                flask_plus_destroy("flask_plusmenuRecruits");
-            });
-            $('#toolbar_activity_trades_list').click(() => {
-                flask_plus_destroy("flask_plusmenuTrades");
-            });
-            $('#toolbar_activity_temple_commands_list').click(() => {
-                flask_plus_destroy("flask_plusmenuTemple_commands");
-            });
 
-            function flask_plus_destroy(flaskJQselector) {
-                $("#" + flaskJQselector).parent().removeClass("displayImp");
-                $("#" + flaskJQselector + "STYLE").remove();
-            }
+            clearTimeout(ActivityBoxes.timeout);
+            ActivityBoxes.timeout = null;
         },
     };
 
