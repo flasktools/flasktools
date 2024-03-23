@@ -9404,7 +9404,7 @@ var LANG = {
                 '#flask_townbb { top:23px; left:184px; z-index:5000; position:absolute; margin:5px 0px 0px 4px; width:22px; height:23px; background:url(https://flasktools.altervista.org/images/bbcodes.png) no-repeat -273px -5px; } ' +
 
                    // Style
-                '#input_townbb { display: none; position: absolute; left: 21px; top: 29px; width: 160px; text-align: center; z-index: 5; } ' +
+                '#input_townbb { display: none; position: absolute; left: 21px; top: 29px; width: 160px; text-align: center; z-index: 5; background: transparent; font-weight: bold; border: 0;} ' +
 
               '</style>').appendTo("head");
         },
@@ -9420,6 +9420,7 @@ var LANG = {
 			$("#flask_townbb").click(function () {
 				$("#input_townbb").toggle();
 				$("#input_townbb").val("[town]" + Game.townId + "[/town]");
+				$(".casted_powers_area .casted_power.power_icon16x16").toggle();
 			});
 
             // Tooltip
