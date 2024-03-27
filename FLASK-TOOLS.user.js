@@ -9407,11 +9407,17 @@ var LANG = {
                 '#input_townbb { display: none; position: absolute; left: 21px; top: 29px; width: 160px; text-align: center; z-index: 5; background: transparent; font-weight: bold; border: 0;} ' +
 
               '</style>').appendTo("head");
+
+	    // Handle town switch
+            $.Observer(uw.GameEvents.town.town_switch).subscribe("flask_input_townbb", () => {
+                $('#input_townbb').hide();
+            })
         },
         deactivate: function () {
             $('#flask_townbb').remove();
             $('#flask_townbb_style').remove();
             $('#input_townbb').remove();
+ 	    $.Observer(uw.GameEvents.town.town_switch).unsubscribe("flask_input_townbb");
         },
         addButton: function () {
 
