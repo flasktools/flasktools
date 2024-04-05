@@ -1,0 +1,27 @@
+{
+	"name": "flasktools",
+	"version": "1.0.0",
+	"description": "<!--\r **flasktools/flasktools** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
+	"main": "FLASK-TOOLS.user.js",
+	"type": "commonjs",
+	"scripts": {
+		"dev": "npx gulp",
+		"start": "npx gulp --updateVersion"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/flasktools/flasktools.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/flasktools/flasktools/issues"
+	},
+	"homepage": "https://github.com/flasktools/flasktools#readme",
+	"dependencies": {
+		"gulp": "^5.0.0",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-insert": "^0.5.0"
+	}
+}
