@@ -33,9 +33,13 @@ function getVersion() {
     }
 }
 
-const version = "1.0.0" // TODO: getVersion();
+
 const OUTPUT = 'merged.user.js';
-const HEADER = fs.readFileSync("template.user.js", 'utf-8').replace('version_number_here', version);
+
+function getHeader() {
+    const version = "1.0.0" // TODO: getVersion();
+    return fs.readFileSync("template.user.js", 'utf-8').replace('version_number_here', version);
+}
 
 // Gulp task to minify JavaScript files
 gulp.task('scripts', () => {
@@ -75,7 +79,7 @@ gulp.task('merge', function () {
                 cb(null, file);
             }),
         )
-        .pipe(insert.prepend(HEADER))
+        .pipe(insert.prepend(getHeader()))
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -87,6 +91,7 @@ if (updateVersion) {
     });
 } else {
     gulp.task('default', (cb) => {
+        gulp.watch('./template.user.js', gulp.series('scripts', 'styles', 'merge'));
         gulp.watch('./src/**/*.js', gulp.series('scripts', 'styles', 'merge'));
         gulp.watch('./styles/**/*.css', gulp.series('scripts', 'styles', 'merge'));
 

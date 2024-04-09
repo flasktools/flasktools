@@ -1,16 +1,33 @@
-### Hi there 👋
+# Modules
 
-<!--
-**flasktools/flasktools** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+-   [ ] Panoramica unità
+-   [ ] Unità inviate
+-   [ ] Forza delle unità
+-   [ ] Capacità di trasporto
+-   [ ] Paragone unità
+-   [ ] Icone città
+-   [ ] Lista città
+-   [ ] Mappa
+-   [ ] BB code città
+-   [ ] Emojy
+-   [ ] Forum difensivo
+-   [ ] Commercio di reclutamento
+-   [ ] Commercio percentuale
+-   [ ] Commercio risorse per feste
+-   [ ] Simuulatore
+-   [ ] Taskbar
+-   [ ] Finestra di ricompensa
+-   [ ] Popup favori
+-   [ ] Menu selezione
+-   [ ] Scrollbar style
+-   [ ] Box dei movimenti
+-   [ ] Scorciatorie da tastiera
+-   [ ] Panoramica truppe esterne
+-   [ ] Movimento accellerator
+-   [ ] Aiuto selezione troppe
+-   [ ] Conquista
+-   [ ] Rotella del mouse
+-   [ ] Statistica del mondo
+-   [ ] Calcolatrice metaviglie
+-   [ ] Scudo
+-   [ ] Bottone
