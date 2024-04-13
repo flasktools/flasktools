@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name		FLASK-TOOLS-DEV
+// @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
 // @version		7.22
 // @author		flasktools
