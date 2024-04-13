@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name		FLASK-TOOLS
+// @name		FLASK-TOOLS-DEV
 // @namespace	https://flasktools.altervista.org
-// @version		7.21
+// @version		7.22
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.21';
+var version = '7.22';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -851,6 +851,7 @@ var LANG = {
                 tti: ["Commercio risorse per le feste", 'Inserito un nuovo tasto per commerciare le risorse. È aggiunto dal quacktools'],
                 wwc: ["Calcolatrice", "Condividi il calcolo della partecipazione", "Frecce prossimo/precedente sulle meraviglie del mondo finite"],
                 htk: ["Scorciatoie da tastiera", "Ti cambia la vita"],
+                stl: ["Tasto per le sentinelle", "Bolla colorata per città supportate"],
                 mod: ["Mod divinità", "Sostituisci le divinità per creare un gioco vario e senza precedenti"],
 
                 err: ["Invia automaticamente il report dei bug", "Se attivi questa opzione, puoi aiutare a identificare i bug."],
@@ -2086,7 +2087,8 @@ var LANG = {
         ubv: true, // Units beyod view
         srl: true, // Scrollbar Style
         tti: true, // Town trade
-        htk: true, // hotkeys
+        htk: true, // Hotkeys
+        stl: true, // Sentinels
         mod: false, // Mod
         wwc: true, // World wonder counter
         wwr: false, // World wonder ranking
@@ -2675,6 +2677,9 @@ var LANG = {
             case "htk":
                 FEATURE = Hotkeys;
                 break;
+            case "stl":
+                FEATURE = Sentinels;
+                break;
             case "mod":
                 FEATURE = Mod;
                 break;
@@ -3064,6 +3069,11 @@ var LANG = {
                     if(DATA.options.htk) {
                         setTimeout(function () {
                             Hotkeys.activate();
+                        }, 0);
+                    }
+                    if (DATA.options.stl) {
+                        setTimeout(function () {
+                            Sentinels.activate();
                         }, 0);
                     }
                     if (DATA.options.mds) {
@@ -3603,7 +3613,7 @@ var LANG = {
 
             // Style
             $('<style id="flask_statistic_style">' +
-                '#flask_statistic_button { top:-32px; right:1410px; z-index:10; position:absolute; } ' +
+                '#flask_statistic_button { top:53px; right:110px; z-index:10; position:absolute; } ' +
                 '#flask_statistic_button .ico_statistics { margin:7px 0px 0px 8px; width:17px; height:17px; background:url(https://flasktools.altervista.org/images/pltgqlaw.png) no-repeat 0px 0px; background-size:100%; } ' +
                     // https://flasktools.altervista.org/images/k4wikrlq.png // https://flasktools.altervista.org/images/ahfr8227.png
                 '#flask_statistic_button .ico_statistics.checked { margin-top:8px; } ' +
@@ -3615,19 +3625,11 @@ var LANG = {
             $('#flask_statistic_style').remove();
         },
         addButton: function () {
-            $('<div id="flask_statistic_button" class="circle_button"><div class="ico_statistics js-caption"></div></div>').appendTo(".gods_area");
+            $('<div id="flask_statistic_button" class="circle_button"><div class="ico_statistics js-caption"></div></div>').appendTo(".bull_eye_buttons");
 
-
-            // Events
-            $('#flask_statistic_button').on('mousedown', function () {
-                $('#flask_statistic_button, .ico_statistics').addClass("checked");
-            }).on('mouseup', function () {
-                $('#flask_statistic_button, .ico_statistics').removeClass("checked");
-            });
 
             $('#flask_statistic_button').click(function () {
                     window.open("https://grepodata.com/points/"+WID);
-                    $('#flask_statistic_button, .ico_statistics').addClass("checked");
             });
 
             // Tooltip
@@ -5125,7 +5127,7 @@ var LANG = {
             UnitComparison.addButton();
 
             // Create Window Type
-            createWindowType("FLASK_COMPARISON", getText("labels", "dsc"), 520, 425, true, ["center", "center", 100, 100]);
+            createWindowType("FLASK_COMPARISON", getText("labels", "dsc"), 620, 425, true, ["center", "center", 100, 100]);
 
             // Style
             $('<style id="flask_comparison_style"> ' +
@@ -5142,7 +5144,7 @@ var LANG = {
 
                     // Content
                 '#flask_comparison .hidden { display:none; } ' +
-                '#flask_comparison table { width:520px; } ' +
+                '#flask_comparison table { width:620px; } ' +
                 '#flask_comparison .hack .t_hack, #flask_comparison .pierce .t_pierce, #flask_comparison .distance .t_distance, #flask_comparison .sea .t_sea { display:inline-table; } ' +
 
                 '#flask_comparison .box_content { background:url(https://flasktools.altervista.org/images/8jd9d3ec.png) 94% 94% no-repeat; background-size:140px; } ' +
@@ -5168,14 +5170,6 @@ var LANG = {
         addButton: function () {
             $('<div id="flask_comparison_button" class="circle_button"><div class="ico_comparison js-caption"></div></div>').appendTo(".bull_eye_buttons");
 
-            // Events
-            /*
-             $('#flask_comparison_button').on('mousedown', function(){
-             $('#flask_comparison_button').addClass("checked");
-             }, function(){
-             $('#flask_comparison_button').removeClass("checked");
-             });
-             */
             $('#flask_comparison_button').on('click', function () {
                 if (!Layout.wnd.getOpenFirst(GPWindowMgr.TYPE_FLASK_COMPARISON)) {
                     UnitComparison.openWindow();
@@ -10182,6 +10176,208 @@ var LANG = {
         deactivate: () => {
             $('#BTN_HK').remove();
             $('#MH_attsup_style').remove();
+        },
+    };
+
+     /******************************************************************************************************************************
+     * Sentinels
+     * ----------------------------------------------------------------------------------------------------------------------------
+     * | ●  Improved a new button for sentinels
+     * | ●  Improved a new layout for city
+     * ----------------------------------------------------------------------------------------------------------------------------
+     *******************************************************************************************************************************/
+
+    var Sentinels = {
+        activate: function SentinelIndicator(){
+            const uw = unsafeWindow;
+            var activeTowns = [];
+            var observer;
+
+            /* Call this function to activate the script */
+            this.activate = () => {
+                const container = uw.$('#map_move_container');
+                if (uw.$("#map_sentinel").length) {
+                    console.log("Already active")
+                    this.updateMap();
+                    return;
+                };
+                const sentinel = uw.$('<div>').attr({
+                    id: 'map_sentinel',
+                    style: 'position: absolute; top: 0px; left: 0px; z-index: 5; pointer-events: none; opacity: 0.6;'
+                });
+                container.append(sentinel);
+
+                const targetNode = uw.$('#map_islands');
+                if (targetNode.length === 0) {
+                    setTimeout(() => {
+                this.activate();
+                    }, 250);
+                } else {
+                    const observerOptions = {
+                        childList: true,
+                        attributes: true,
+                        subtree: true,
+                    };
+                    observer = new MutationObserver(this.updateMap);
+                    observer.observe(targetNode[0], observerOptions);
+                    console.log("update")
+                    this.updateMap();
+                }
+            }
+
+            /* Call this function to deactivate the script */
+            this.deactivate = () => {
+        uw.$("#map_sentinel").remove()
+        activeTowns = [];
+        if (observer !== null) {
+            observer.disconnect();
+        }
+    }
+
+            /* Update the map with the elements */
+            this.updateMap = () => {
+        if (uw.$("#map_sentinel").length === 0) return;
+        const townIds = Object.keys(uw.ITowns.towns);
+        const currentTowns = [];
+        townIds.forEach((townId) => {
+            const models = uw.ITowns.all_supporting_units.fragments[townId].models;
+            models.forEach((model) => {
+                const attributes = model.attributes;
+                if (!currentTowns.includes(attributes.current_town_id)) {
+                    currentTowns.push(attributes.current_town_id);
+                }
+            });
+        });
+
+        /* Check if list has updated */
+        const toRemove = activeTowns.filter((townId) => !currentTowns.includes(townId));
+        const toAdd = currentTowns.filter((townId) => !activeTowns.includes(townId));
+        toRemove.forEach((townId) => this.removeShild(townId));
+        toAdd.forEach((townId) => {
+            console.log(townId)
+            if (!this.addShield(townId)) {
+                currentTowns.splice(currentTowns.indexOf(townId), 1);
+            }
+        });
+        activeTowns.length = 0;
+        Array.prototype.push.apply(activeTowns, currentTowns);
+    }
+
+            /* Add a shield to a town with that ID, if the town is not found, return false */
+            this.addShield = (townId) => {
+        const town = uw.$(`#town_${townId}`);
+        if (town.length === 0) {
+            return false;
+        }
+        const x = parseInt(town.css('left'));
+        const y = parseInt(town.css('top'));
+        const shield = uw.$('<div>').attr('id', `sentinel_shield_${townId}`).css({
+            left: `${x - 29}px`,
+            top: `${y - 25}px`,
+            background: 'url(https://gpit.innogamescdn.com/images/game/autogenerated/map/town_overlay/city_shield_cd2b0df.png) no-repeat 0 0',
+            width: '110px',
+            height: '72px',
+            position: 'absolute',
+            transform: 'translate(10px,10px)',
+            backgroundSize: '95%',
+            filter: 'grayscale(100%) brightness(80%) sepia(300%) hue-rotate(50deg) saturate(500%)'
+        });
+        uw.$('#map_sentinel').append(shield);
+        return true;
+    }
+
+            /* Called with a polisId, remove the shield */
+            this.removeShild = (polisId) => {
+                uw.$(`#sentinel_shield_${polisId}`).remove()
+            }
+        },
+        activate: function SentinelButton() {
+            const uw = unsafeWindow;
+
+            /* Activate script and subscript to event */
+            this.activate = () => {
+        uw.$.Observer(uw.GameEvents.map.town.click).subscribe((e, data) => {
+            if (!this.isTownInIsland(data.x, data.y)) return;
+            if (this.hasSentinel(data.id)) return;
+            if (this.hasIncomingSupport(data.id)) return;
+            let menu = uw.$('#context_menu');
+            if (!menu) return;
+            let div = uw.$('<div>').attr({
+                id: 'sentinel_button',
+                style: 'width: 50px; height: 50px; position: absolute; background: url(https://i.ibb.co/9wwBNfD/sentinel.png); z-index: auto; cursor: pointer;'
+            });
+            div.html(`
+    <div id="sentinel_description" style="position: absolute;overflow: hidden;width: 118px;display: none;margin-left: -59px;left: 50%;top: 40px;z-index: 5;" >
+        <div style="position: absolute; top: 0; left: 0; right: 0; background: url(https://gpit.innogamescdn.com/images/game/autogenerated/layout/layout_095495a.png) no-repeat -488px -406px; width: 118px; height: 18px;"></div>
+        <div style="position: absolute; top: 18px; left: 0; right: 0; bottom: 11px; background: url(https://gpit.innogamescdn.com/images/game/layout/context_menu_middle.png) repeat-y 0 0;"></div>
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: url(https://gpit.innogamescdn.com/images/game/autogenerated/layout/layout_095495a.png) no-repeat -326px -240px; width: 118px; height: 11px;"></div>
+        <div style="color: #fc6; font-weight: 700; text-align: center; word-wrap: break-word; line-height: 19px; z-index: 1; position: relative; padding: 4px;">Sentinel</div>
+    </div>`);
+            menu.append(div);
+            uw.$('#sentinel_button').animate({ top: '-100px' }, 120);
+            uw.$('#sentinel_button').hover(
+                () => uw.$('#sentinel_description').css('display', 'block'),
+                () => uw.$('#sentinel_description').css('display', 'none'),
+            );
+            uw.$('#sentinel_button').click(() => {
+                handleButtonClick(data);
+                menu.remove();
+            });
+        });
+
+    }
+
+            /* return true if polis has own troops inside else otherwise */
+            this.hasSentinel = (id) => {
+        for (let town of Object.keys(uw.ITowns.towns)) {
+            if (town == id) return true;
+            const models = uw.ITowns.all_supporting_units.fragments[town].models;
+            for (let model of models) if (model.attributes.current_town_id == id) return true;
+        }
+        return false;
+    }
+
+            /* Retrun true if polis is in current active polis island */
+            this.isTownInIsland = (x, y) => {
+        const currentTown = uw.ITowns.getCurrentTown();
+        const cx = currentTown.getIslandCoordinateX();
+        const cy = currentTown.getIslandCoordinateY();
+        return (cx == x && cy == y);
+    }
+
+            /* Return true if the polis already have a support incoming */
+            this.hasIncomingSupport = (target_id) => {
+        let movments = uw.MM.getModels().MovementsUnits;
+        for (let m in movments) if (movments[m].attributes.target_town_id == target_id) return true;
+        return false;
+    }
+
+            /* Make ajax request to send a sentinel */
+            function sendSentinel(unit, target_id) {
+        let data = { id: target_id, type: 'support' };
+        data[unit] = 3;
+        uw.gpAjax.ajaxPost('town_info', 'send_units', data);
+    }
+
+            /* Return what unit of current polis can be used */
+            function selectUnit() {
+        let units = uw.ITowns.getCurrentTown().getLandUnits();
+        if (units.sword >= 3) return 'sword';
+        if (units.archer >= 3) return 'archer';
+        if (units.hoplite >= 3) return 'hoplite';
+        return null;
+    }
+
+            /* Handle the clic of the sentinel button in context menu*/
+            function handleButtonClick(target) {
+        let unit = selectUnit();
+        if (!unit) {
+            uw.HumanMessage.error('No troops available');
+            return;
+        }
+        sendSentinel(unit, target.id);
+    }
+
         },
     };
 
