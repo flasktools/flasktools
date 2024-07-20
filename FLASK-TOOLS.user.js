@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.21
+// @version		7.22
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.21';
+var version = '7.22';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -3603,7 +3603,7 @@ var LANG = {
 
             // Style
             $('<style id="flask_statistic_style">' +
-                '#flask_statistic_button { top:-32px; right:1410px; z-index:10; position:absolute; } ' +
+                '#flask_statistic_button { top:53px; right:110px; z-index:10; position:absolute; } ' +
                 '#flask_statistic_button .ico_statistics { margin:7px 0px 0px 8px; width:17px; height:17px; background:url(https://flasktools.altervista.org/images/pltgqlaw.png) no-repeat 0px 0px; background-size:100%; } ' +
                     // https://flasktools.altervista.org/images/k4wikrlq.png // https://flasktools.altervista.org/images/ahfr8227.png
                 '#flask_statistic_button .ico_statistics.checked { margin-top:8px; } ' +
@@ -3615,19 +3615,11 @@ var LANG = {
             $('#flask_statistic_style').remove();
         },
         addButton: function () {
-            $('<div id="flask_statistic_button" class="circle_button"><div class="ico_statistics js-caption"></div></div>').appendTo(".gods_area");
+            $('<div id="flask_statistic_button" class="circle_button"><div class="ico_statistics js-caption"></div></div>').appendTo(".bull_eye_buttons");
 
-
-            // Events
-            $('#flask_statistic_button').on('mousedown', function () {
-                $('#flask_statistic_button, .ico_statistics').addClass("checked");
-            }).on('mouseup', function () {
-                $('#flask_statistic_button, .ico_statistics').removeClass("checked");
-            });
 
             $('#flask_statistic_button').click(function () {
                     window.open("https://grepodata.com/points/"+WID);
-                    $('#flask_statistic_button, .ico_statistics').addClass("checked");
             });
 
             // Tooltip
