@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.22
+// @version		7.23
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.22';
+var version = '7.23';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -3665,13 +3665,13 @@ var LANG = {
     }
 
     var worldWonderIcon = {
-        colossus_of_rhodes: "url(https://gpall.innogamescdn.com/images/game/map/wonder_colossus_of_rhodes.png) 38px -1px;",
-        great_pyramid_of_giza: "url(https://gpall.innogamescdn.com/images/game/map/wonder_great_pyramid_of_giza.png) 34px -6px;",
-        hanging_gardens_of_babylon: "url(https://gpall.innogamescdn.com/images/game/map/wonder_hanging_gardens_of_babylon.png) 34px -5px;",
-        lighthouse_of_alexandria: "url(https://gpall.innogamescdn.com/images/game/map/wonder_lighthouse_of_alexandria.png) 37px -1px;",
-        mausoleum_of_halicarnassus: "url(https://gpall.innogamescdn.com/images/game/map/wonder_mausoleum_of_halicarnassus.png) 37px -4px;",
-        statue_of_zeus_at_olympia: "url(https://gpall.innogamescdn.com/images/game/map/wonder_statue_of_zeus_at_olympia.png) 36px -3px;",
-        temple_of_artemis_at_ephesus: "url(https://gpall.innogamescdn.com/images/game/map/wonder_temple_of_artemis_at_ephesus.png) 34px -5px;"
+        colossus_of_rhodes: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_colossus_of_rhodes.png) 38px -1px;",
+        great_pyramid_of_giza: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_great_pyramid_of_giza.png) 34px -6px;",
+        hanging_gardens_of_babylon: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_hanging_gardens_of_babylon.png) 34px -5px;",
+        lighthouse_of_alexandria: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_lighthouse_of_alexandria.png) 37px -1px;",
+        mausoleum_of_halicarnassus: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_mausoleum_of_halicarnassus.png) 37px -4px;",
+        statue_of_zeus_at_olympia: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_statue_of_zeus_at_olympia.png) 36px -3px;",
+        temple_of_artemis_at_ephesus: "url(https://gp" + MID + ".innogamescdn.com/images/game/map/wonder_temple_of_artemis_at_ephesus.png) 34px -5px;"
     };
 
     var WorldWonderIcons = {
@@ -3791,7 +3791,7 @@ var LANG = {
                     '#town_icon .icon_big	{ position:absolute; left:9px; top:9px; height:25px; width:25px; } ' +
 
                     '#town_icon .select_town_icon {position: absolute; top:47px; left:23px; width:145px; display:none; padding:2px; border:3px inset rgb(7, 99, 12); box-shadow:rgba(0, 0, 0, 0.5) 4px 4px 6px; border-radius:0px 10px 10px 10px;' +
-                    'background:url(https://gpall.innogamescdn.com/images/game/popup/middle_middle.png); } ' +
+                    'background:url(https://gp' + MID + '.innogamescdn.com/images/game/popup/middle_middle.png); } ' +
                     '#town_icon .item-list { max-height:400px; max-width:200px; align:right; overflow-x:hidden; } ' +
 
                     '#town_icon .option_s { cursor:pointer; width:20px; height:20px; margin:0px; padding:2px 2px 3px 3px; border:2px solid rgba(0,0,0,0); border-radius:5px; background-origin:content-box; background-clip:content-box;} ' +
@@ -5139,13 +5139,13 @@ var LANG = {
 
                 '#flask_comparison .box_content { background:url(https://flasktools.altervista.org/images/8jd9d3ec.png) 94% 94% no-repeat; background-size:140px; } ' +
 
-                '#flask_comparison .compare_type_icon { height:25px; width:25px; background:url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon { height:25px; width:25px; background:url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
                 '#flask_comparison .compare_type_icon.booty { background:url(https://flasktools.altervista.org/images/ki4gwd7x.png); background-size:100%; } ' +
-                '#flask_comparison .compare_type_icon.time { background:url(https://gpall.innogamescdn.com/images/game/res/time.png); background-size:100%; } ' +
-                '#flask_comparison .compare_type_icon.favor { background:url(https://gpall.innogamescdn.com/images/game/res/favor.png); background-size:100%; } ' +
-                '#flask_comparison .compare_type_icon.wood { background:url(https://gpall.innogamescdn.com/images/game/res/wood.png); background-size:100%; } ' +
-                '#flask_comparison .compare_type_icon.stone { background:url(https://gpall.innogamescdn.com/images/game/res/stone.png); background-size:100%; } ' +
-                '#flask_comparison .compare_type_icon.iron { background:url(https://gpall.innogamescdn.com/images/game/res/iron.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon.time { background:url(https://gp' + MID + '.innogamescdn.com/images/game/res/time.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon.favor { background:url(https://gp' + MID + '.innogamescdn.com/images/game/res/favor.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon.wood { background:url(https://gp' + MID + '.innogamescdn.com/images/game/res/wood.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon.stone { background:url(https://gp' + MID + '.innogamescdn.com/images/game/res/stone.png); background-size:100%; } ' +
+                '#flask_comparison .compare_type_icon.iron { background:url(https://gp' + MID + '.innogamescdn.com/images/game/res/iron.png); background-size:100%; } ' +
                 '.icon_small2 { position:relative; height:20px; width:25px; margin-left:-25px; }' +
                 '</style>').appendTo("head");
         },
@@ -5255,7 +5255,7 @@ var LANG = {
                 att: {hack: "36%", pierce: "27%", distance: "45.5%", sea: "72.5%"},
                 def: {hack: "18%", pierce: "18%", distance: "18%", sea: "81.5%"}
             };
-            var unitIMG = "https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png";
+            var unitIMG = "https://gp" + MID + ".innogamescdn.com/images/game/units/units_info_sprite2.51.png";
             var strArray = [
                 "<td></td>",
                 '<td><div class="compare_type_icon" style="background-position: 0% ' + pos.att[type] + ';"></div></td>',
@@ -5665,7 +5665,7 @@ var LANG = {
                 '.wonder_controls .indicator3 { z-index:0; } ' +
                 '.wonder_controls .indicator3.red { background-position:right -203px; height:10px; width:242px; } ' +
                 '.wonder_controls .indicator3.green { background-position:right -355px; height:10px; width:242px; } ' +
-                '.wonder_controls .all_res { background:url(https://gpall.innogamescdn.com/images/game/layout/resources_2.32.png) no-repeat 0 -90px; width:30px; height:30px; margin:0 auto; margin-left:5px; } ' +
+                '.wonder_controls .all_res { background:url(https://gp' + MID + '.innogamescdn.com/images/game/layout/resources_2.32.png) no-repeat 0 -90px; width:30px; height:30px; margin:0 auto; margin-left:5px; } ' +
                 '.wonder_controls .town-capacity-indicator { margin-top:0px; } ' +
                 '</style>').appendTo('head');
         },
@@ -5872,8 +5872,8 @@ var LANG = {
                 // Counter
             '#move_counter { position:relative; width:100px; margin-top:-16px; left: 40%; } ' +
             '#move_counter .movement { float:left; margin:0px 5px 0px 0px; height:18px; width:18px; position:relative; } ' +
-            '#move_counter .def { background:url(https://gpall.innogamescdn.com/images/game/place/losts.png); background-position:0 -36px; } ' +
-            '#move_counter .off { background:url(https://gpall.innogamescdn.com/images/game/place/losts.png); background-position:0 0px; }' +
+            '#move_counter .def { background:url(https://gp' + MID + '.innogamescdn.com/images/game/place/losts.png); background-position:0 -36px; } ' +
+            '#move_counter .off { background:url(https://gp' + MID + '.innogamescdn.com/images/game/place/losts.png); background-position:0 0px; }' +
             '</style>').appendTo("head");
 
         /*
@@ -6074,8 +6074,8 @@ var LANG = {
                 '.flask_speed_booster { border:1px solid #724B08; border-spacing: 0px;} ' +
                 '.flask_speed_booster td { border:0; padding:2px; } ' +
                 '.flask_speed_booster .checkbox_new { margin: 4px 0px 1px 3px; } ' +
-                '.flask_speed_booster .odd { background: url("https://gpall.innogamescdn.com/images/game/border/brown.png") repeat scroll 0% 0% transparent; } ' +
-                '.flask_speed_booster .even { background: url("https://gpall.innogamescdn.com/images/game/border/odd.png") repeat scroll 0% 0% transparent; } ' +
+                '.flask_speed_booster .odd { background: url("https://gp' + MID + '.innogamescdn.com/images/game/border/brown.png") repeat scroll 0% 0% transparent; } ' +
+                '.flask_speed_booster .even { background: url("https://gp' + MID + '.innogamescdn.com/images/game/border/odd.png") repeat scroll 0% 0% transparent; } ' +
                 '.booster_icon { width:20px; height:20px; background-image:url(' + speedBoosterSprite + ');} ' +
                 '.booster_icon.improved_speed { background-position:0 0; } ' +
                 '.booster_icon.cartography { background-position:-20px 0; } ' +
@@ -6120,8 +6120,8 @@ var LANG = {
                 '.attack_support_window .way_duration, '+
                 '.attack_support_window .arrival_time { padding:0px 0px 0px 0px; background:none;} ' +
 
-                '.attack_support_window .way_icon { padding:30px 0px 0px 30px; background:transparent url(https://gpall.innogamescdn.com/images/game/towninfo/traveltime.png) no-repeat 0 0; } ' +
-                '.attack_support_window .arrival_icon { padding:30px 0px 0px 30px; background:transparent url(https://gpall.innogamescdn.com/images/game/towninfo/arrival.png) no-repeat 0 0; } ' +
+                '.attack_support_window .way_icon { padding:30px 0px 0px 30px; background:transparent url(https://gp' + MID + '.innogamescdn.com/images/game/towninfo/traveltime.png) no-repeat 0 0; } ' +
+                '.attack_support_window .arrival_icon { padding:30px 0px 0px 30px; background:transparent url(https://gp' + MID + '.innogamescdn.com/images/game/towninfo/arrival.png) no-repeat 0 0; } ' +
                 '.attack_support_window .short_icon { padding:20px 0px 0px 30px; background:url(https://flasktools.altervista.org/images/ck2c7eohpyfa3yczt.png) 11px -1px / 21px no-repeat; filter: hue-rotate(50deg); -webkit-filter: hue-rotate(50deg); } ' +
                 '.attack_support_window .hades_icon { padding:20px 0px 0px 30px; background:url(https://flasktools.altervista.org/images/hades_arrival.png) 11px -1px / 18px no-repeat; filter: hue-rotate(50deg); -webkit-filter: hue-rotate(50deg); } ' +
 
@@ -6942,8 +6942,8 @@ var LANG = {
                     '</table>' +
                     '</span>' +
                     '<div class="cont_right">' +
-                    '<img id="def_button" class="active img" src="https://gpall.innogamescdn.com/images/game/unit_overview/support.png">' +
-                    '<img id="off_button" class="img" src="https://gpall.innogamescdn.com/images/game/unit_overview/attack.png">' +
+                    '<img id="def_button" class="active img" src="https://gp' + MID + '.innogamescdn.com/images/game/unit_overview/support.png">' +
+                    '<img id="off_button" class="img" src="https://gp' + MID + '.innogamescdn.com/images/game/unit_overview/attack.png">' +
                     '</div></div>').appendTo('.units_land .content');
 
                 // Style
@@ -6963,14 +6963,14 @@ var LANG = {
                     '#strength.def .strength_font { color:#fc6;} ' +
 
                     '#strength .ico { height:20px; width:20px; } ' +
-                    '#strength .units_info_sprite { background:url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
+                    '#strength .units_info_sprite { background:url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
 
                     '#strength .img_pierce { background-position:0px -20px; } ' +
                     '#strength .img_dist { background-position:0px -40px; } ' +
                     '#strength hr { margin:0px; background-color:#5F5242; height:2px; border:0px solid; } ' +
                     '#strength .cont_left { width:65%;  display:table-cell; } ' +
 
-                    '#strength.cont { background:url(https://gpall.innogamescdn.com/images/game/layout/layout_units_nav_border.png); } ' +
+                    '#strength.cont { background:url(https://gp' + MID + '.innogamescdn.com/images/game/layout/layout_units_nav_border.png); } ' +
 
                     '#strength .cont_right { width:30%; display:table-cell; vertical-align:middle; } ' +
                     '#strength .img { float:right; background:none; margin:2px 8px 2px 0px; } ' +
@@ -7075,7 +7075,7 @@ var LANG = {
                     width: '20px'
                 });
                 $('#strength_eo .units_info_sprite').css({
-                    background: 'url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png)',
+                    background: 'url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png)',
                     backgroundSize: '100%'
                 });
                 $('#strength_eo .img_pierce').css({backgroundPosition: '0% 9%'});
@@ -7126,7 +7126,7 @@ var LANG = {
                         '<div class="game_border_corner corner1"></div><div class="game_border_corner corner2"></div>' +
                         '<div class="game_border_corner corner3"></div><div class="game_border_corner corner4"></div>' +
                         '<span class="bold" style="color:#000;font-size: 0.8em;"><table style="margin:0px;background:#f7dca2;width:100%;align:center;">' +
-                        '<tr><td width="1%"><img class="ico" src="https://gpall.innogamescdn.com/images/game/res/pop.png"></td><td id="p" align="center" width="100%">0</td></tr>' +
+                        '<tr><td width="1%"><img class="ico" src="https://gp' + MID + '.innogamescdn.com/images/game/res/pop.png"></td><td id="p" align="center" width="100%">0</td></tr>' +
                         '</table></span>' +
                         '</div>').appendTo('.ui-dialog #units');
 
@@ -7135,7 +7135,7 @@ var LANG = {
                         width: '20px'
                     });
                     $('.ui-dialog #units .units_info_sprite').css({
-                        background: 'url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png)',
+                        background: 'url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png)',
                         backgroundSize: '100%'
                     });
                     $('.ui-dialog #units .img_pierce').css({backgroundPosition: '0% 9%'});
@@ -7167,7 +7167,7 @@ var LANG = {
                 '</div>').appendTo('.units_naval .content');
 
             $('#transporter.cont').css({
-                background: 'url(https://gpall.innogamescdn.com/images/game/layout/layout_units_nav_border.png)'
+                background: 'url(https://gp' + MID + '.innogamescdn.com/images/game/layout/layout_units_nav_border.png)'
             });
 
             $('#transporter').hover(function () {
@@ -7336,16 +7336,16 @@ var LANG = {
             $('<style id="flask_simulator_strength_style">'+
                 '#flask_simulator_strength { position:absolute; top:188px; font-size:0.8em; width:63%; } '+
                 '#flask_simulator_strength .ico { height:20px; width:20px; margin:auto; } '+
-                '#flask_simulator_strength .units_info_sprite { background:url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
+                '#flask_simulator_strength .units_info_sprite { background:url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png); background-size:100%; } ' +
 
                 '#flask_simulator_strength .img_hack { background-position:0% 36%; } '+
                 '#flask_simulator_strength .img_pierce { background-position:0% 27%; } '+
                 '#flask_simulator_strength .img_dist { background-position:0% 45% !important; } '+
                 '#flask_simulator_strength .img_ship { background-position:0% 72%; } '+
 
-                '#flask_simulator_strength .img_fav { background: url(https://gpall.innogamescdn.com/images/game/res/favor.png) !important; background-size: 100%; } '+
-                '#flask_simulator_strength .img_res { background: url(https://gpall.innogamescdn.com/images/game/units/units_info_sprite2.51.png) 0% 54%; background-size: 100%; } '+
-                '#flask_simulator_strength .img_pop { background: url(https://gpall.innogamescdn.com/images/game/res/pop.png); background-size:100%; } '+
+                '#flask_simulator_strength .img_fav { background: url(https://gp' + MID + '.innogamescdn.com/images/game/res/favor.png) !important; background-size: 100%; } '+
+                '#flask_simulator_strength .img_res { background: url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_info_sprite2.51.png) 0% 54%; background-size: 100%; } '+
+                '#flask_simulator_strength .img_pop { background: url(https://gp' + MID + '.innogamescdn.com/images/game/res/pop.png); background-size:100%; } '+
 
                 '#flask_simulator_strength .left_border { width: 54px; } '+
                 '</style>'
@@ -7568,9 +7568,9 @@ var LANG = {
             backgroundPosition: '-89px 0px'
         });
         var imgArray = {
-            wall: 'https://gpall.innogamescdn.com/images/game/main/wall.png',
-            tower: 'https://gpall.innogamescdn.com/images/game/main/tower.png',
-            hide: 'https://gpall.innogamescdn.com/images/game/main/hide.png',
+            wall: 'https://gp' + MID + '.innogamescdn.com/images/game/main/wall.png',
+            tower: 'https://gp' + MID + '.innogamescdn.com/images/game/main/tower.png',
+            hide: 'https://gp' + MID + '.innogamescdn.com/images/game/main/hide.png',
 
             spy: 'https://flasktools.altervista.org/images/spy.png',
             pop: 'https://flasktools.altervista.org/images/pop.png',
@@ -7634,7 +7634,7 @@ var LANG = {
             trireme: 'https://wiki.en.grepolis.com/images/a/ad/Trireme_40x40.png',
             colonize_ship: 'https://wiki.en.grepolis.com/images/d/d1/Colonize_ship_40x40.png',
 
-            move_icon: 'https://gpall.innogamescdn.com/images/game/unit_overview/',
+            move_icon: 'https://gp' + MID + '.innogamescdn.com/images/game/unit_overview/',
 
             bordure: 'https://flasktools.altervista.org/images/bordure.png'
         };
@@ -8176,7 +8176,7 @@ var LANG = {
 
             // Style
             $('<style id="flask_bireme_counter">' +
-                '#available_units { background: url(https://gpall.innogamescdn.com/images/game/units/units_sprite_90x90_compressed.jpg); height:90px;' +
+                '#available_units { background: url(https://gp' + MID + '.innogamescdn.com/images/game/units/units_sprite_90x90_compressed.jpg); height:90px;' +
                 'width:90px; position: relative; margin: 5px 28px 0px 28px; background-position: -270px 0px; } ' +
                 '#bi_count { color:#826021; position:relative; top:28px; font-style:italic; width:79px; } ' +
                 '#sea_id { background: none; font-size:25px; cursor:default; height:50px; width:50px; position:absolute; top:70px; left:157px; z-index: 30; } ' +
@@ -8302,7 +8302,7 @@ var LANG = {
             fury_row = '<td class="bold" style="'+ textColor +'">' + uw.ITowns.player_gods.attributes.fury + '/' + uw.ITowns.player_gods.attributes.max_fury + '</td>';
 
             tooltip_str = $('<table><tr><td></td>' + pic_row + '</tr>' +
-                '<tr align="center"><td><img src="https://gpall.innogamescdn.com/images/game/res/favor.png"></td>' + fav_row + '</tr>' +
+                '<tr align="center"><td><img src="https://gp' + MID + '.innogamescdn.com/images/game/res/favor.png"></td>' + fav_row + '</tr>' +
                 '<tr align="center"><td>+</td>' + prod_row + '</tr>' +
                 '</table>');
             tooltip_fury = $('<div id"tooltip"><table><tr align="center"><td><img src="https://flasktools.altervista.org/images/fury.png"></td>' + fury_row + '</tr>' +
@@ -10189,87 +10189,87 @@ var LANG = {
             $('<style id="flask_mod">' +
 
                     // God Icon
-                '.gods_area .gods_container.god.zeus { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -156px; } ' +
-                '.gods_area .gods_container.god.athena { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -78px; } ' +
-                '.gods_area .gods_container.god.poseidon { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px -156px; } ' +
-                '.gods_area .gods_container.god.hera { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -156px -78px; } ' +
-                '.gods_area .gods_container.god.hades { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -156px 0px; } ' +
-                '.gods_area .gods_container.god.artemis { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px -78px; } ' +
-                '.gods_area .gods_container.god.aphrodite { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px 0px; } ' +
-                '.gods_area .gods_container.god.ares { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -0px; } ' +
+                '.gods_area .gods_container.god.zeus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -156px; } ' +
+                '.gods_area .gods_container.god.athena { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -78px; } ' +
+                '.gods_area .gods_container.god.poseidon { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px -156px; } ' +
+                '.gods_area .gods_container.god.hera { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -156px -78px; } ' +
+                '.gods_area .gods_container.god.hades { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -156px 0px; } ' +
+                '.gods_area .gods_container.god.artemis { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px -78px; } ' +
+                '.gods_area .gods_container.god.aphrodite { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat 0px 0px; } ' +
+                '.gods_area .gods_container.god.ares { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_layout_eb0a200.png) no-repeat -78px -0px; } ' +
 
-                '#temple_god_static.zeus { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -0px -525px; } ' +
-                '#temple_god_static.poseidon { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -236px; } ' +
-                '#temple_god_static.hera { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -0px; } ' +
-                '#temple_god_static.hades { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -525px -236px; } ' +
-                '#temple_god_static.athena { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -525px -0px; } ' +
-                '#temple_god_static.artemis { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -235px -289px; } ' +
-                '#temple_god_static.aphrodite { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -290px -0px; } ' +
-                '#temple_god_static.ares { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -0px -289px; } ' +
+                '#temple_god_static.zeus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -0px -525px; } ' +
+                '#temple_god_static.poseidon { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -236px; } ' +
+                '#temple_god_static.hera { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -0px; } ' +
+                '#temple_god_static.hades { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -525px -236px; } ' +
+                '#temple_god_static.athena { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -525px -0px; } ' +
+                '#temple_god_static.artemis { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -235px -289px; } ' +
+                '#temple_god_static.aphrodite { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -290px -0px; } ' +
+                '#temple_god_static.ares { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -0px -289px; } ' +
 
-                '.god_selection .js-list .zeus_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -810px -472px; } ' +
-                '.god_selection .js-list .poseidon_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -472px; } ' +
-                '.god_selection .js-list .hera_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -687px; } ' +
-                '.god_selection .js-list .hades_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -637px; } ' +
-                '.god_selection .js-list .athena_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -587px; } ' +
-                '.god_selection .js-list .artemis_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -537px; } ' +
-                '.god_selection .js-list .aphrodite_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -437px; } ' +
-                '.god_selection .js-list .ares_small { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -487px; } ' +
+                '.god_selection .js-list .zeus_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -810px -472px; } ' +
+                '.god_selection .js-list .poseidon_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -760px -472px; } ' +
+                '.god_selection .js-list .hera_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -687px; } ' +
+                '.god_selection .js-list .hades_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -637px; } ' +
+                '.god_selection .js-list .athena_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -587px; } ' +
+                '.god_selection .js-list .artemis_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -537px; } ' +
+                '.god_selection .js-list .aphrodite_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -437px; } ' +
+                '.god_selection .js-list .ares_small { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/gods/gods_temple_13fb61e.png) no-repeat -995px -487px; } ' +
 
                     // Unit Icon
-                '.unit_icon50x50.minotaur { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -300px no-repeat; } ' +
-                '.unit_icon50x50.manticore { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) 0px -300px no-repeat; } ' +
-                '.unit_icon50x50.zyklop { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -400px no-repeat; } ' +
-                '.unit_icon50x50.harpy { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -150px -250px no-repeat; } ' +
-                '.unit_icon50x50.medusa { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -300px no-repeat; } ' +
-                '.unit_icon50x50.cerberus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -50px no-repeat; } ' +
-                '.unit_icon50x50.fury { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -0px -250px no-repeat; } ' +
-                '.unit_icon50x50.centaur { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -0px no-repeat; } ' +
-                '.unit_icon50x50.pegasus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -350px -150px no-repeat; } ' +
-                '.unit_icon50x50.griffin { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -250px no-repeat; } ' +
-                '.unit_icon50x50.calydonian_boar { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -150px no-repeat; } ' +
-                '.unit_icon50x50.satyr { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -350px no-repeat; } ' +
-                '.unit_icon50x50.spartoi { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -350px -350px no-repeat; } ' +
-                '.unit_icon50x50.ladon { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -150px no-repeat; } ' +
-                '.unit_icon50x50.sea_monster { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -150px -350px no-repeat; } ' +
-                '.unit_icon50x50.siren { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -350px no-repeat; } ' +
-                '.unit_icon50x50.godsent {background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -50px -250px no-repeat; }' +
+                '.unit_icon50x50.minotaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -300px no-repeat; } ' +
+                '.unit_icon50x50.manticore { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) 0px -300px no-repeat; } ' +
+                '.unit_icon50x50.zyklop { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -400px no-repeat; } ' +
+                '.unit_icon50x50.harpy { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -150px -250px no-repeat; } ' +
+                '.unit_icon50x50.medusa { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -300px no-repeat; } ' +
+                '.unit_icon50x50.cerberus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -50px no-repeat; } ' +
+                '.unit_icon50x50.fury { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -0px -250px no-repeat; } ' +
+                '.unit_icon50x50.centaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -0px no-repeat; } ' +
+                '.unit_icon50x50.pegasus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -350px -150px no-repeat; } ' +
+                '.unit_icon50x50.griffin { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -250px no-repeat; } ' +
+                '.unit_icon50x50.calydonian_boar { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -150px no-repeat; } ' +
+                '.unit_icon50x50.satyr { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -100px -350px no-repeat; } ' +
+                '.unit_icon50x50.spartoi { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -350px -350px no-repeat; } ' +
+                '.unit_icon50x50.ladon { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -300px -150px no-repeat; } ' +
+                '.unit_icon50x50.sea_monster { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -150px -350px no-repeat; } ' +
+                '.unit_icon50x50.siren { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -200px -350px no-repeat; } ' +
+                '.unit_icon50x50.godsent {background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_50x50_654368f.png) -50px -250px no-repeat; }' +
 
-                '.unit_icon40x40.minotaur { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -240px no-repeat; } ' +
-                '.unit_icon40x40.manticore { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) 0px -240px no-repeat; } ' +
-                '.unit_icon40x40.zyklop { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -320px no-repeat; } ' +
-                '.unit_icon40x40.harpy { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -120px -200px no-repeat; } ' +
-                '.unit_icon40x40.medusa { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -240px no-repeat; } ' +
-                '.unit_icon40x40.cerberus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -40px no-repeat; } ' +
-                '.unit_icon40x40.fury { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -0px -200px no-repeat; } ' +
-                '.unit_icon40x40.centaur { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -0px no-repeat; } ' +
-                '.unit_icon40x40.pegasus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -280px -120px no-repeat; } ' +
-                '.unit_icon40x40.griffin { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -200px no-repeat; } ' +
-                '.unit_icon40x40.calydonian_boar { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -120px no-repeat; } ' +
-                '.unit_icon40x40.satyr { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -280px no-repeat; } ' +
-                '.unit_icon40x40.spartoi { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -280px -280px no-repeat; } ' +
-                '.unit_icon40x40.ladon { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -120px no-repeat; } ' +
-                '.unit_icon40x40.sea_monster { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -120px -280px no-repeat; } ' +
-                '.unit_icon40x40.siren { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -280px no-repeat; } ' +
-                '.unit_icon40x40.godsent {background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -40px -200px no-repeat; }' +
+                '.unit_icon40x40.minotaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -240px no-repeat; } ' +
+                '.unit_icon40x40.manticore { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) 0px -240px no-repeat; } ' +
+                '.unit_icon40x40.zyklop { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -320px no-repeat; } ' +
+                '.unit_icon40x40.harpy { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -120px -200px no-repeat; } ' +
+                '.unit_icon40x40.medusa { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -240px no-repeat; } ' +
+                '.unit_icon40x40.cerberus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -40px no-repeat; } ' +
+                '.unit_icon40x40.fury { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -0px -200px no-repeat; } ' +
+                '.unit_icon40x40.centaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -0px no-repeat; } ' +
+                '.unit_icon40x40.pegasus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -280px -120px no-repeat; } ' +
+                '.unit_icon40x40.griffin { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -200px no-repeat; } ' +
+                '.unit_icon40x40.calydonian_boar { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -120px no-repeat; } ' +
+                '.unit_icon40x40.satyr { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -80px -280px no-repeat; } ' +
+                '.unit_icon40x40.spartoi { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -280px -280px no-repeat; } ' +
+                '.unit_icon40x40.ladon { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -240px -120px no-repeat; } ' +
+                '.unit_icon40x40.sea_monster { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -120px -280px no-repeat; } ' +
+                '.unit_icon40x40.siren { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -160px -280px no-repeat; } ' +
+                '.unit_icon40x40.godsent {background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_40x40_66aaef2.png) -40px -200px no-repeat; }' +
 
-                '.unit_icon70x70.minotaur { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -420px no-repeat; } ' +
-                '.unit_icon70x70.manticore { background: url(https://gpit.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) 0px -420px no-repeat; } ' +
-                '.unit_icon70x70.zyklop { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -560px no-repeat; } ' +
-                '.unit_icon70x70.harpy { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -210px -350px no-repeat; } ' +
-                '.unit_icon70x70.medusa { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -420px no-repeat; } ' +
-                '.unit_icon70x70.cerberus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -70px no-repeat; } ' +
-                '.unit_icon70x70.fury { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -0px -350px no-repeat; } ' +
-                '.unit_icon70x70.centaur { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -0px no-repeat; } ' +
-                '.unit_icon70x70.pegasus { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -210px no-repeat; } ' +
-                '.unit_icon70x70.griffin { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -350px no-repeat; } ' +
-                '.unit_icon70x70.calydonian_boar { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -210px no-repeat; } ' +
-                '.unit_icon70x70.satyr { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -490px no-repeat; } ' +
-                '.unit_icon70x70.spartoi { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -490px -490px no-repeat; } ' +
-                '.unit_icon70x70.ladon { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -210px no-repeat; } ' +
-                '.unit_icon70x70.sea_monster { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -210px -490px no-repeat; } ' +
-                '.unit_icon70x70.siren { background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -490px no-repeat; } ' +
-                '.unit_icon70x70.godsent {background: url(https://gpzz.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -70px -350px no-repeat; }' +
+                '.unit_icon70x70.minotaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -420px no-repeat; } ' +
+                '.unit_icon70x70.manticore { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) 0px -420px no-repeat; } ' +
+                '.unit_icon70x70.zyklop { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -560px no-repeat; } ' +
+                '.unit_icon70x70.harpy { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -210px -350px no-repeat; } ' +
+                '.unit_icon70x70.medusa { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -420px no-repeat; } ' +
+                '.unit_icon70x70.cerberus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -70px no-repeat; } ' +
+                '.unit_icon70x70.fury { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -0px -350px no-repeat; } ' +
+                '.unit_icon70x70.centaur { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -0px no-repeat; } ' +
+                '.unit_icon70x70.pegasus { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -210px no-repeat; } ' +
+                '.unit_icon70x70.griffin { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -350px no-repeat; } ' +
+                '.unit_icon70x70.calydonian_boar { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -210px no-repeat; } ' +
+                '.unit_icon70x70.satyr { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -140px -490px no-repeat; } ' +
+                '.unit_icon70x70.spartoi { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -490px -490px no-repeat; } ' +
+                '.unit_icon70x70.ladon { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -420px -210px no-repeat; } ' +
+                '.unit_icon70x70.sea_monster { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -210px -490px no-repeat; } ' +
+                '.unit_icon70x70.siren { background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -280px -490px no-repeat; } ' +
+                '.unit_icon70x70.godsent {background: url(https://gp' + MID + '.innogamescdn.com/images/game/autogenerated/units/unit_icons_70x70_467fcae.png) -70px -350px no-repeat; }' +
 
               '</style>').appendTo('head');
         },
