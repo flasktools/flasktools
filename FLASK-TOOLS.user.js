@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.23
+// @version		7.24
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.23';
+var version = '7.24';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -350,13 +350,13 @@ function FLASK_GAME(version, gm, DATA, time_a) {
         MID = uw.Game.market_id;
         AID = uw.Game.alliance_id;
         PID = uw.Game.player_id;
-        TID = Game.townId;
+        TID = uw.Game.townId;
         pName = uw.Game.player_name;
 
         // World with Artemis ??
-        Game.hasArtemis = true; //Game.constants.gods.length == 6;
-        Game.hasAphrodite = true; //Game.constants.gods.length == 7;
-        Game.hasAres = true; //Game.constants.gods.length == 8;
+        uw.Game.hasArtemis = true; //Game.constants.gods.length == 6;
+        uw.Game.hasAphrodite = true; //Game.constants.gods.length == 7;
+        uw.Game.hasAres = true; //Game.constants.gods.length == 8;
     }
 
     $.prototype.reverseList = [].reverse;
@@ -2609,9 +2609,6 @@ var LANG = {
             case "sim":
                 FEATURE = Simulator;
                 break;
-            case "spl":
-                FEATURE = Spellbox;
-                break;
             case "tsk":
                 FEATURE = Taskbar;
                 break;
@@ -3853,7 +3850,7 @@ var LANG = {
 
                 $('#town_icon .select_town_icon [name="' + (manuTownTypes[uw.Game.townId] || (autoTownTypes[uw.Game.townId] ? "auto" : "" )) + '"]').addClass("sel");
 		$.Observer(uw.GameEvents.town.town_switch).subscribe("town_switch_icon", this.switchTown)
-		    
+
             } catch (error) {
                 errorHandling(error, "addTownIcon");
             }
@@ -5971,9 +5968,13 @@ var LANG = {
     /*******************************************************************************************************************************
      * ● Sent units box
      *******************************************************************************************************************************/
+
     var SentUnits = {
         activate: function () {
-            $.Observer(GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
+            $.Observer(uw.GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
+                // We handle revolt in the same pool as a regular attack & portal olympus
+                if (data.sending_type === "revolt" || data.sending_type === "portal_attack_olympus") data.sending_type = "attack";
+                if (data.sending_type === "portal_support_olympus") data.sending_type = "support";
                 for (var z in data.params) {
                     if (data.params.hasOwnProperty(z) && (data.sending_type !== "")) {
                         if (uw.GameData.units[z]) {
@@ -5982,11 +5983,11 @@ var LANG = {
                         }
                     }
                 }
-                //SentUnits.update(data.sending_type); ????
+                SentUnits.update(data.sending_type);
             });
         },
         deactivate: function () {
-            $.Observer(GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
+            $.Observer(uw.GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
         },
         add: function (wndID, action) {
             if (!$(wndID + '.sent_units_box').get(0)) {
@@ -6030,27 +6031,31 @@ var LANG = {
                 $(wndID + '#btn_sent_units_reset').click(function () {
                     // Overwrite old array
                     sentUnitsArray[action] = {};
-
                     SentUnits.update(action);
                 });
-            }
-        },
+
+                }
+            },
+
         update: function (action) {
             try {
                 // Remove old unit list
                 $('.sent_units_box.' + action + ' .units_list').each(function () {
                     this.innerHTML = "";
                 });
+                function appendUnitIcon(unit, count) {
+                    $('.sent_units_box.' + action + ' .units_list').each(function () {
+                        $(this).append('<div class="unit_icon25x25 ' + unit +
+                            (count >= 1000 ? (count >= 10000 ? " five_digit_number" : " four_digit_number") : "") + '">' +
+                            '<span class="count text_shadow">' + count + '</span>' +
+                            '</div>');
+                    });
+                }
                 // Add new unit list
                 for (var x in sentUnitsArray[action]) {
                     if (sentUnitsArray[action].hasOwnProperty(x)) {
                         if ((sentUnitsArray[action][x] || 0) > 0) {
-                            $('.sent_units_box.' + action + ' .units_list').each(function () {
-                                $(this).append('<div class="unit_icon25x25 ' + x +
-                                    (sentUnitsArray[action][x] >= 1000 ? (sentUnitsArray[action][x] >= 10000 ? " five_digit_number" : " four_digit_number") : "") + '">' +
-                                    '<span class="count text_shadow">' + sentUnitsArray[action][x] + '</span>' +
-                                    '</div>');
-                            });
+                            appendUnitIcon(x, sentUnitsArray[action][x]);
                         }
                     }
                 }
@@ -8122,7 +8127,7 @@ var LANG = {
         // insert smileys from arrays into smiley box
         addSmileys: function (type, bbcodeBarId) {
 		if (!bbcodeBarId) return;
-		
+
             // reset smilies
             if ($(bbcodeBarId + " .box_content").get(0)) {
                 $(bbcodeBarId + " .box_content").get(0).innerHTML = '';
@@ -8284,21 +8289,21 @@ var LANG = {
 
         setFavorPopup: function () {
 
-            var pic_row = "", fav_row = "", prod_row = "", fury_row= "", color_row, tooltip_str, tooltip_fury;
+            var pic_row = "", fav_row = "", prod_row = "", fury_row= "", textColor, tooltip_str, tooltip_fury;
             var FavorMonde = ""; //(WID == "fr121" ||WID == "en119" ||WID == "en117" || WID == "it71" || WID == "it70" || WID == "de106")
 
             for (var g in FavorPopup.godArray) {
                 if (FavorPopup.godArray.hasOwnProperty(g)) {
                     if (uw.ITowns.player_gods.attributes.temples_for_gods[g]) {
                         pic_row += '<td><div style="transform:scale(0.8); margin: -6px;"; class="god_mini ' + [g] + '";></td>';
-                        color_row = ((uw.ITowns.player_gods.attributes[g + "_favor"]) == uw.ITowns.player_gods.attributes.max_favor) ? textColor = "color:red;" : textColor = "color:blue";
-                        fav_row += '<td class="bold" style="color:blue">' + uw.ITowns.player_gods.attributes[g + "_favor"] + '</td>';
+                        textColor = ((uw.ITowns.player_gods.attributes[g + "_favor"]) == uw.ITowns.player_gods.attributes.max_favor) ? textColor = "color:red;" : textColor = "color:blue";
+                        fav_row += '<td class="bold" style="' + textColor + '">' + uw.ITowns.player_gods.attributes[g + "_favor"] + '</td>';
                         prod_row += '<td class="bold">' + uw.ITowns.player_gods.attributes.production_overview[g].production + '</td>';
                     }
                 }
             }
 
-            color_row = ((uw.ITowns.player_gods.attributes.fury) == uw.ITowns.player_gods.attributes.max_fury) ? textColor = "color:red;" : textColor = "color:blue";
+            textColor = ((uw.ITowns.player_gods.attributes.fury) == uw.ITowns.player_gods.attributes.max_fury) ? textColor = "color:red;" : textColor = "color:blue";
             fury_row = '<td class="bold" style="'+ textColor +'">' + uw.ITowns.player_gods.attributes.fury + '/' + uw.ITowns.player_gods.attributes.max_fury + '</td>';
 
             tooltip_str = $('<table><tr><td></td>' + pic_row + '</tr>' +
@@ -10177,7 +10182,7 @@ var LANG = {
         },
     };
 
-     /******************************************************************************************************************************
+    /******************************************************************************************************************************
      * Mod
      * ----------------------------------------------------------------------------------------------------------------------------
      * | ●  Improved a new mod for god
