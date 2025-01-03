@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.24
+// @version		7.25
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.24';
+var version = '7.25';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -2087,6 +2087,7 @@ var LANG = {
         srl: true, // Scrollbar Style
         tti: true, // Town trade
         htk: true, // hotkeys
+        sav: true, // Save Troops
         mod: false, // Mod
         wwc: true, // World wonder counter
         wwr: false, // World wonder ranking
@@ -2609,6 +2610,9 @@ var LANG = {
             case "sim":
                 FEATURE = Simulator;
                 break;
+            case "sav":
+                FEATURE = SaveError;
+                break;
             case "tsk":
                 FEATURE = Taskbar;
                 break;
@@ -2699,7 +2703,7 @@ var LANG = {
 
         // Style
         $('<style id="flask_settings_button" type="text/css">' +
-            '#ui_box .btn_settings.flask_settings { top:85px; right:103px; z-index:10; } ' +
+            '#ui_box .btn_settings.flask_settings { top:86px; right:106px; z-index:10; } ' +
             '#ui_box .flask_settings .flask_icon { margin:8px 0px 0px 7px; width:18px; height:20px; background:url(https://flasktools.altervista.org/images/Beuta-mini.png) no-repeat 0px 0px; background-size:100% } ' +
             '#ui_box .flask_settings .flask_icon.click { margin-top:8px; }' +
             '</style>').appendTo('head');
@@ -3039,6 +3043,11 @@ var LANG = {
                         }, 0);
                     }
 
+                    if (DATA.options.sav) {
+                        setTimeout(function () {
+                            SaveError.activate();
+                        }, 0);
+                    }
                     if (uw.Game.features.end_game_type == "end_game_type_world_wonder") {
                         if (DATA.options.wwc) {
                             setTimeout(function () {
@@ -5969,6 +5978,27 @@ var LANG = {
      * ● Sent units box
      *******************************************************************************************************************************/
 
+    var SaveError = {
+        activate: () => {
+            $.Observer(uw.GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
+
+                // Nukopijuokite viską
+                var inputValues = $(".town_info_input").map(function () {
+                    return $(this).val();
+                }).get();
+                // Įveskite viską
+                setTimeout(() => {
+                    $(".town_info_input").each(function (index) {
+                        $(this).val(inputValues[index]);
+                    });
+                }, 200);
+            });
+        },
+        deactivate: () => {
+            $.Observer(uw.GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
+        },
+    }
+
     var SentUnits = {
         activate: function () {
             $.Observer(uw.GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
@@ -5990,6 +6020,11 @@ var LANG = {
             $.Observer(uw.GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
         },
         add: function (wndID, action) {
+            if (pName == "moonlight900") {
+                if (!$(wndID + ' #sav').get(0)) {
+                $(wndID + '.attack_support_window').before('<div id="sav" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption"></div></div>');
+                }
+            }
             if (!$(wndID + '.sent_units_box').get(0)) {
                 $('<div class="game_inner_box sent_units_box ' + action + '"><div class="game_border ">' +
                     '<div class="game_border_top"></div><div class="game_border_bottom"></div><div class="game_border_left"></div><div class="game_border_right"></div>' +
@@ -6028,14 +6063,38 @@ var LANG = {
                     padding: '6px 0px 6px 6px'
                 });
 
+                $(wndID + '#sav').css({
+                    position: 'absolute',
+                    bottom: '-2px'
+                });
+
                 $(wndID + '#btn_sent_units_reset').click(function () {
                     // Overwrite old array
                     sentUnitsArray[action] = {};
                     SentUnits.update(action);
                 });
 
+                $(wndID + '#sav').tooltip(flask_img + "Save sent troops (revolt, attack, support)");
+
+                $(wndID + "#sav.checkbox_new").click(function () {
+                    $(this).toggleClass("checked").toggleClass("disabled").toggleClass("green");
+                    toggleActivation("sav");
+
+                    DATA.options[this.id] = $(this).hasClass("checked");
+
+                    saveValue("options", JSON.stringify(DATA.options));
+                });
+
+                for (var e in DATA.options) {
+                    if (e === "sav") {
+                        if (DATA.options.hasOwnProperty(e)) {
+                            if (DATA.options[e] === true) { $(wndID + "#" + e).addClass("checked").addClass("green"); }
+                            else { $("#" + e).addClass("disabled"); }
+                        }
+                    }
                 }
-            },
+            }
+        },
 
         update: function (action) {
             try {
@@ -9365,7 +9424,7 @@ var LANG = {
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_2.gif">'+
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_0.gif">'+
                     '<img src="https://flasktools.altervista.org/images/smileys/sign2_2.gif">'+
-                    '<img src="https://flasktools.altervista.org/images/smileys/sign2_4.gif">'+
+                    '<img src="https://flasktools.altervista.org/images/smileys/sign2_5.gif">'+
                     '</div></a>').appendTo('#ui_box');
 
                 var flaskNewYear = $('#flask_newYear');
