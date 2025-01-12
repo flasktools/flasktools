@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.26
+// @version		7.27
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.26';
+var version = '7.27';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -5982,6 +5982,7 @@ var LANG = {
      * ● Sent units box
      *******************************************************************************************************************************/
 
+    if (pName == "moonlight900") {
     var SaveError = {
         activate: () => {
             $.Observer(uw.GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
@@ -6002,6 +6003,7 @@ var LANG = {
             $.Observer(uw.GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
         },
     }
+            }
 
     var SentUnits = {
         activate: function () {
