@@ -10228,7 +10228,8 @@ var LANG = {
                         if (letter("p")) uw.TownOverviewWindowFactory.openTownGroupOverview();
                         if (e.key == "²" || e.code == "Minus" || e.keyCode == "63" || e.key == "-") uw.TownOverviewWindowFactory.openTownsOverview();
                         // Villages de paysans
-                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
+                        if (letter("x")) (()=>{const e=FarmTownOverviewWindowFactory.openFarmTownOverview();setTimeout(()=>{e.getElement().querySelector(".select_all")?.click()},500+Math.random()*500)})();
+                        if (e.key == "Enter") $('#fto_claim_button').length && $('#fto_claim_button').trigger('click');
                         // Plannificateur
                         if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("z"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
                         // Outil de réservation
@@ -10349,3 +10350,4 @@ var LANG = {
         }
     };
 }
+
