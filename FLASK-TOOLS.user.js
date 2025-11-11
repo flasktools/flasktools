@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.27';
+var version = '7.28';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -10349,3 +10349,4 @@ var LANG = {
         }
     };
 }
+
