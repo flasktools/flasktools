@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.27
+// @version		7.28
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -5982,7 +5982,7 @@ var LANG = {
      * ● Sent units box
      *******************************************************************************************************************************/
 
-    if (pName == "moonlight900") {
+    if (pName == "moonlight900" || pName == "ezio greggio" || pName == "flasktools" || pName == "ratentif") {
     var SaveError = {
         activate: () => {
             $.Observer(uw.GameEvents.command.send_unit).subscribe('FLASK_SEND_UNITS', function (e, data) {
@@ -6026,7 +6026,7 @@ var LANG = {
             $.Observer(uw.GameEvents.command.send_unit).unsubscribe('FLASK_SEND_UNITS');
         },
         add: function (wndID, action) {
-            if (pName == "moonlight900") {
+            if (pName == "moonlight900" || pName == "ezio greggio" || pName == "flasktools" || pName == "stregattaa" ||pName == "ratentif") {
                 if (!$(wndID + ' #sav').get(0)) {
                 $(wndID + '.attack_support_window').before('<div id="sav" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption"></div></div>');
                 }
@@ -10228,7 +10228,7 @@ var LANG = {
                         if (letter("p")) uw.TownOverviewWindowFactory.openTownGroupOverview();
                         if (e.key == "²" || e.code == "Minus" || e.keyCode == "63" || e.key == "-") uw.TownOverviewWindowFactory.openTownsOverview();
                         // Villages de paysans
-                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
+                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();setTimeout(()=>{$(".checkbox.select_all").click();setTimeout(() => {$("#fto_claim_button").click(); setTimeout(() => {jQuery("div.close_all:first").click();}, 1000);}, Math.random() * (1500 - 500) + 500);}, Math.random() * (1500 - 500) + 500);
                         // Plannificateur
                         if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("z"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
                         // Outil de réservation
