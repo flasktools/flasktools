@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.28
+// @version		7.29
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.28';
+var version = '7.29';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -666,6 +666,7 @@ var LANG = {
                 scr: ["Mouse wheel", 'You can change the views with the mouse wheel'],
                 tbc: ["Town bbcode", "Adds the town bbcode to the town tab"],
                 stt: ["Statistics world", "Adds a button to see the world stats"],
+                frm: ["Farming", "Adds a button to farming in a click"],
                 cov: ["Culture overview", 'Adds a count for parties in the culture overview. This is added by the quacktool'],
                 suh: ["Select unit helper", 'Improved a new tools on the attack and support window. This is added by the quacktool'],
                 ubv: ["Units beyond view", 'Improved a new tools on the agorà window. This is added by the quacktool'],
@@ -739,6 +740,8 @@ var LANG = {
                 cap_of_invisibility: "Cap of invisibility",
                 // Statistics
                 stt: "Statistics world",
+                // Farming
+                frm: "farming",
                 // Popup
                 poi: "Points",
                 sup: "Support",
@@ -841,7 +844,6 @@ var LANG = {
                 tov: ["Panoramica città", 'Sostituisce la panoramica città con la vecchia finestra vecchio stile'],
                 scr: ["Rotella del mouse", 'Puoi cambiare visuale con la rotella del mouse'],
                 tbc: ["BBcode città", "Aggiunge il bbcode delle città alla tab della città"],
-                tdo: ["Panoramica del commercio", "Aggiunge i gruppi città alla panoramica del commercio"],
                 stt: ["Statistiche del mondo", "Aggiunge un pulsante per vedere le statistiche del mondo"],
                 cov: ["Panoramica della cultura", 'Aggiunge un conteggio per le feste nella panoramica cultura. È aggiunto dal quacktools'],
                 suh: ["Select unit helper", 'Inserito un nuovo strumento sulla finestra degli attacchi e supporti. È aggiunto dal quacktools'],
@@ -2078,8 +2080,8 @@ var LANG = {
         tov: false,// Town overview
         scr: true, // Mausrad
         tbc: true, // Town bbcode
-        tdo: true, // Trade overview
         stt: true, // Statistics
+        frm: true, // Farming
         mdr: true, // Daily reward
         cov: true, // Culture overwiev
         suh: true, // Select unit helper
@@ -2362,11 +2364,7 @@ var LANG = {
                          '<td><img src="https://flasktools.altervista.org/images/tveb5n33.png" /></td>'+
                          '<td><div id="trd2" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">Trade Limit Marker</div></div>'+
                          '<p></p></td>'+
-
-                    '</tr><tr>' +
-                    '<td><img src="https://flasktools.altervista.org/images/game/settings/trade/proposta_grepo.png" alt="" /></td>' +
-                    '<td><div id="tdo" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "tdo")[0] + '</div></div>' +
-                    '<p>' + getText("options", "tdo")[1] + '</p><br></td>' + */
+                         */
                     '</tr></table>' +
 
                         // Layout tab
@@ -2440,6 +2438,10 @@ var LANG = {
                     '<td><img src="https://flasktools.altervista.org/images/game/settings/misc/Statistics.png" style="transform: scale(0.5);" alt="" /></td>' +
                     '<td><div id="stt" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "stt")[0] + '</div></div>' +
                     '<p>' + getText("options", "stt")[1] + '</p></td>' +
+                    '</tr><tr>' +
+                    '<td><img src="https://flasktools.altervista.org/images/Farming.png" style="transform: scale(0.5);" alt="" /></td>' +
+                    '<td><div id="frm" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "frm")[0] + '</div></div>' +
+                    '<p>' + getText("options", "frm")[1] + '</p></td>' +
                     '</tr><tr>' +
                     '<td><img src="" alt="" /></td>' +
                     '<td><div id="err" class="checkbox_new"><div class="cbx_icon"></div><div class="cbx_caption">' + getText("options", "err")[0] + '</div></div>' +
@@ -2657,6 +2659,9 @@ var LANG = {
                 break;
             case "stt":
                 FEATURE = Statistics;
+                break;
+            case "frm":
+                FEATURE = Farming;
                 break;
             case "suh":
                 FEATURE = selectunitshelper;
@@ -2890,14 +2895,14 @@ var LANG = {
                                             TownBbc.activate();
                                         }, 0);
                                     }
-                                    if (DATA.options.tdo) {
-                                        setTimeout(function () {
-                                            TradeOverview.activate();
-                                        }, 0);
-                                    }
                                     if (DATA.options.stt) {
                                         setTimeout(function () {
                                             Statistics.activate();
+                                        }, 0);
+                                    }
+                                    if (DATA.options.frm) {
+                                        setTimeout(function () {
+                                            Farming.activate();
                                         }, 0);
                                     }
                                     if (DATA.options.suh) {
@@ -3623,7 +3628,6 @@ var LANG = {
         addButton: function () {
             $('<div id="flask_statistic_button" class="circle_button"><div class="ico_statistics js-caption"></div></div>').appendTo(".bull_eye_buttons");
 
-
             $('#flask_statistic_button').click(function () {
                     window.open("https://grepodata.com/points/"+WID);
             });
@@ -3634,6 +3638,46 @@ var LANG = {
         },
     };
 
+
+
+    /*******************************************************************************************************************************
+     * Farming
+     * ----------------------------------------------------------------------------------------------------------------------------
+     * | ● Improved a button to farming in a click
+     * ----------------------------------------------------------------------------------------------------------------------------
+     *******************************************************************************************************************************/
+
+    var Farming = {
+        activate: function () {
+            // Add world statistics
+            Farming.addButton();
+
+            // Style
+            $('<style id="flask_farming_style">' +
+                '#flask_farming_button { top:85px; right:110px; z-index:10; position:absolute; } ' +
+                '#flask_farming_button .ico_farming { margin:7px 0px 0px 8px; width:17px; height:17px; background:url(https://flasktools.altervista.org/images/bdready.png) no-repeat 0px 0px; background-size:100%; } ' +
+                    // https://flasktools.altervista.org/images/k4wikrlq.png // https://flasktools.altervista.org/images/ahfr8227.png
+                '#flask_farming_button .ico_farming.checked { margin-top:8px; } ' +
+                '</style>').appendTo('head');
+
+        },
+        deactivate: function () {
+            $('#flask_farming_button').remove();
+            $('#flask_farming_style').remove();
+        },
+        addButton: function () {
+            $('<div id="flask_farming_button" class="circle_button"><div class="ico_farming js-caption"></div></div>').appendTo(".bull_eye_buttons");
+
+
+            $('#flask_farming_button').click(function () {
+                    uw.FarmTownOverviewWindowFactory.openFarmTownOverview();setTimeout(()=>{$(".checkbox.select_all").click();setTimeout(() => {$('#fto_claim_button').length && $('#fto_claim_button').trigger('click');}, Math.random() * (1500 - 500) + 500);}, Math.random() * (1500 - 500) + 500);
+            });
+
+            // Tooltip
+            $('#flask_farming_button').tooltip(getText("labels", "frm")); // TODO
+
+        },
+    };
 
 
     /*******************************************************************************************************************************
@@ -10228,7 +10272,7 @@ var LANG = {
                         if (letter("p")) uw.TownOverviewWindowFactory.openTownGroupOverview();
                         if (e.key == "²" || e.code == "Minus" || e.keyCode == "63" || e.key == "-") uw.TownOverviewWindowFactory.openTownsOverview();
                         // Villages de paysans
-                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();setTimeout(()=>{$(".checkbox.select_all").click();setTimeout(() => {$("#fto_claim_button").click(); setTimeout(() => {jQuery("div.close_all:first").click();}, 1000);}, Math.random() * (1500 - 500) + 500);}, Math.random() * (1500 - 500) + 500);
+                        if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
                         // Plannificateur
                         if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("z"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
                         // Outil de réservation
