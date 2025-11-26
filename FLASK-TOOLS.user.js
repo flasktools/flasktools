@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.29
+// @version		7.30
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.29';
+var version = '7.30';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -496,6 +496,7 @@ var LANG = {
                 scr: ["Mausrad-Zoom", 'Man kann mit dem Mausrad die 3 Ansichten wechseln'],
                 tbc: ["Stadtbbcode", "Fügt den Stadt-BBCode zur Registerkarte Stadt hinzu"],
                 stt: ["Weltstatistiken", "Fügt eine Knopfe hinzu, um die Weltstatistiken zu sehen"],
+                frm: ["Landwirtschaft", "Fügt der Landwirtschaft mit einem Klick eine Schaltfläche hinzu"],
                 cov: ["Kulturübersicht", 'Fügt eine Zählung für Parteien in der Kulturübersicht hinzu. Dies wird von den Quacktool hinzugefügt'],
                 suh: ["Wählen Sie Einheiten-Helfer", 'Verbesserte neue Tools im Angriffs- und Supportfenster. Dies wird vom Quacktool hinzugefügt'],
                 ubv: ["Einheiten außerhalb der Sicht", 'Neue Tools im Agorà-Fenster wurden verbessert. Dies wird vom Quacktool hinzugefügt'],
@@ -565,6 +566,8 @@ var LANG = {
                 cap_of_invisibility: "Kappe der Unsichtbarkeit",
                 // Statistics
                 stt: "Weltstatistiken",
+                // Farming
+                frm: "Landwirtschaft",
                 // Popup
                 poi: "Punkte",
                 sup: "Unterstützung",
@@ -741,7 +744,7 @@ var LANG = {
                 // Statistics
                 stt: "Statistics world",
                 // Farming
-                frm: "farming",
+                frm: "Farming",
                 // Popup
                 poi: "Points",
                 sup: "Support",
@@ -845,6 +848,7 @@ var LANG = {
                 scr: ["Rotella del mouse", 'Puoi cambiare visuale con la rotella del mouse'],
                 tbc: ["BBcode città", "Aggiunge il bbcode delle città alla tab della città"],
                 stt: ["Statistiche del mondo", "Aggiunge un pulsante per vedere le statistiche del mondo"],
+                frm: ["Farming", "Aggiunge un bottone per farmare in un click"],
                 cov: ["Panoramica della cultura", 'Aggiunge un conteggio per le feste nella panoramica cultura. È aggiunto dal quacktools'],
                 suh: ["Select unit helper", 'Inserito un nuovo strumento sulla finestra degli attacchi e supporti. È aggiunto dal quacktools'],
                 ubv: ["Units beyond view", 'Inserito un nuovo strumento sulla finestra agorà. È aggiunto dal quacktools'],
@@ -923,6 +927,8 @@ var LANG = {
                 cap_of_invisibility: "Elmo dell'invisibilità",
                 // Statistics
                 stt: "Statistiche del mondo",
+                // Farming
+                frm: "Farming",
                 // Popup
                 poi: "Punti",
                 sup: "Supporto",
@@ -1026,6 +1032,7 @@ var LANG = {
                 scr: ["Molette de la souris", 'Avec la molette de la souris vous pouvez changer les vues. Ceci est ajouté par les quacktools'],
                 tbc: ["BBcode de ville", "Ajoute le bbcode de la ville à la tab de la ville"],
                 stt: ["Statistiques mondiales", "Ajoute un bouton pour voir les statistiques mondiales"],
+                frm: ["Agriculture", "Ajoute un bouton à l'agriculture en un clic"],
                 cov: ["Aperçu de culture", "Ajoute un compte pour les fêtes dans la surview de la culture. Ceci est ajouté par les quacktools"],
                 suh: ["Sélectionner l'unité d'assistance", 'Amélioration de nouveaux outils sur la fenêtre de attaque et de support. Ceci est ajouté par le quacktool'],
                 ubv: ["Unités au-delà de la aperçu", 'Amélioration de un nouvel outil sur la fenêtre agorà. Ceci est ajouté par le quacktool'],
@@ -1094,6 +1101,8 @@ var LANG = {
                 cap_of_invisibility: "Chapeau d'invisibilité",
                 // Statistics
                 stt: "Statistiques mondiales",
+                // Farming
+                frm: "Agriculture",
                 // Popup
                 poi: "Points",
                 sup: "Soutien",
@@ -1197,6 +1206,7 @@ var LANG = {
                 scr: ["Колесо мыши", 'С помощью колеса мыши вы можете изменить взгляды'], // ?
                 tbc: ["код города", "добавляет код города в список городов"], // ?
                 stt: ["Мировая статистика", "Добавляет кнопку, чтобы увидеть мировую статистику"],
+                frm: ["фермерство", "Добавляет кнопку в фермерство в один клик"],
                 cov: ["обзор культуры", "Добавляет счет для вечеринок в обзор культуры. Это добавлено шарлатанами"],
                 suh: ["Выберите юнит помощника", 'Улучшены новые инструменты для атаки и поддержки окна. Это добавлено шарлатаном'],
                 ubv: ["Единицы вне поля зрения", 'Улучшены новые инструменты в окне agorà. Это добавлено шарлатаном'],
@@ -1266,6 +1276,8 @@ var LANG = {
                 cap_of_invisibility: "шапка невидимости",
                 // Statistics
                 stt: "Мировая статистика",
+                // Farming
+                frm: "фермерство",
                 // Popup
                 poi: "Точки",
                 sup: "служба поддержки",
@@ -1369,6 +1381,7 @@ var LANG = {
                 scr: ["Zoom", 'Możesz zmienić poziom przybliżenia mapy kółkiem myszy'],
                 tbc: ["BBCode miasto", "Dodaje kod miasta do listy miasta"], // ?
                 stt: ["Statystyki świata", "Dodaje przycisk, aby wyświetlić statystyki świata"],
+                frm: ["Rolnictwo", "Dodaje przycisk do farmy jednym kliknięciem"],
                 cov: ["Przegląd kultury", "Dodaje liczbę stron w przeglądzie kultury. Jest to dodawane przez quacktools"],
                 suh: ["Wybierz pomocnika jednostki", 'Poprawiono nowe narzędzia w oknie ataku i wsparcia. Jest to dodawane przez quacktool'],
                 ubv: ["Jednostki poza zasięgiem wzroku", 'Poprawione nowe narzędzia w oknie agory. Jest to dodawane przez quacktool'],
@@ -1437,6 +1450,8 @@ var LANG = {
                 cap_of_invisibility: "Czapka niewidzialności",
                 // Statistics
                 stt: "Statystyki świata",
+                // Farming
+                frm: "Rolnictwo",
                 // Popup
                 poi: "Zwrotnica",
                 sup: "Wsparcie",
@@ -1540,6 +1555,7 @@ var LANG = {
                 scr: ["Rueda raton", 'Puede cambiar las vistas con la rueda del raton'],
                 tbc: ["BBCode de la ciudad", "Agrega el código de ciudad a la lista de ciudades"],
                 stt: ["Estadísticas mundiales", "Añade un botón para ver las estadísticas mundiales"],
+                frm: ["Agricultura", "Añade un botón para cultivar con un clic"],
                 cov: ["Resumen de la cultura", "Añade un recuento para las partes de la cultura en exceso de vista. Esto es agregado por las herramientas de quacktools"],
                 suh: ["Seleccionar ayudante de unidad", 'Se mejoraron las nuevas herramientas en la ventana de ataque y soporte. Esto es agregado por quacktool'],
                 ubv: ["Unidades más allá de la vista", 'Mejora de nuevas herramientas en la ventana de agorà. Esto es agregado por quacktool'],
@@ -1608,6 +1624,8 @@ var LANG = {
                 cap_of_invisibility: "Gorro de invisibilidad",
                 // Statistics
                 lab: "Estadísticas mundiales",
+                // Farming
+                frm: "Agricultura",
                 // Popup
                 poi: "Puntos",
                 sup: "Apoyo",
@@ -1712,6 +1730,7 @@ var LANG = {
                 scr: ["Roda do Mouse", 'Você pode alterar os pontos de vista com a roda do mouse'],
                 tbc: ["BBcode das Cidades", "Adiciona o código da cidade à lista de cidades"],
                 stt: ["Estatísticas mundiais", "Adiciona um botão para ver as estatísticas mundiais"],
+                frm: ["Agricultura", "Adiciona um botão à agricultura com um clique."],
                 cov: ["Visão da cultura", "Adiciona uma contagem para festas na visão da cultura. Isso é adicionado pelas quacktools"],
                 suh: ["Selecionar auxiliar de unidade", 'Melhoradas novas ferramentas na janela de ataque e suporte. Isto é adicionado pelo quacktool'],
                 ubv: ["Unidades além da vista", 'Melhoradas novas ferramentas na janela agorà. Isto é adicionado pelo quacktool'],
@@ -1783,6 +1802,8 @@ var LANG = {
                 cap_of_invisibility: "Limite de invisibilidade",
                 // Statistics
                 lab: "Estatísticas mundiais",
+                // Farming
+                frm: "Agricultura",
                 // Popup
                 poi: "Pontos",
                 sup: "Apoio",
@@ -1886,6 +1907,7 @@ var LANG = {
                 scr: ["Kolečko myši", 'Můžeš změnit pohledy s kolečkem myši'],
                 tbc: ["BBCode měst", "Přidává kód města do seznamu měst"],
                 stt: ["Světové statistiky", "Přidá tlačítko pro zobrazení statistik světa"],
+                frm: ["Zemědělství", "Přidá tlačítko k farmaření jedním kliknutím"],
                 cov: ["Přehled kultury", "Přidá počet pro strany v přehledu kultury. Toto je přidáno quacktools"],
                 suh: ["Vyberte pomocníka jednotky", 'Vylepšené nové nástroje v okně útoku a podpory. Toto je přidáno quacktool'],
                 ubv: ["Jednotky mimo dohled", 'Vylepšené nové nástroje v okně agorà. Toto je přidáno quacktool'],
@@ -1957,6 +1979,8 @@ var LANG = {
                 cap_of_invisibility: "Čepice neviditelnosti",
                 // Statistics
                 stt: "Světové statistiky",
+                // Farming
+                frm: "Zemědělství",
                 // Popup
                 poi: "Body",
                 sup: "Podpěra",
@@ -2126,11 +2150,11 @@ var LANG = {
 
         var v_info = $('#version_info');
         if (version_text === '') {
-                    if (version < latest_version) {
+                    if (version < flask_latest_version) {
                         version_text = "<div class='version_icon red'></div><div class='version_text'>" + getText('settings', 'version_old') + "</div><div class='version_icon red'></div>" +
                             "<a class='version_text' href='https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js' target='_top'>-->" + getText('settings', 'version_update') + "</a>";
                         version_color = 'crimson';
-                    } else if (version == latest_version) {
+                    } else if (version == flask_latest_version) {
                         version_text = "<div class='version_icon green'></div><div class='version_text'>" + getText('settings', 'version_new') + "</div><div class='version_icon green'></div>";
                         version_color = 'darkgreen';
                     } else {
@@ -2152,7 +2176,8 @@ var LANG = {
             $(".settings-menu ul:last").append('<li id="flask_li"><img id="flask_icon" src="https://flasktools.altervista.org/images/166d6p2.png"></div> <a id="flask_tools" href="#"> FLASK-Tools</a></li>');
         }
 
-        $(".settings-link").click(function () {
+        setTimeout(() => {
+        $(".settings-link, #gd_li").click(function () {
             $('.section').each(function () {
                 this.style.display = "block";
             });
@@ -2164,6 +2189,7 @@ var LANG = {
                 $('#flask_settings').get(0).style.display = "none";
             }
         });
+        }, 500);
 
         $("#flask_tools").click(function () {
             if ($('.email').get(0)) {
@@ -10105,7 +10131,7 @@ var LANG = {
                     "position" : "absolute",
                     "height" : "16px",
                     "width" : "22px",
-                    "background-image" : "url(http://flasktools.altervista.org/images/game/trade_thea.png)",
+                    "background-image" : "url(https://flasktools.altervista.org/images/game/trade_thea.png)",
                     "background-repeat" : "no-repeat",
                     "background-position" : "0px -1px"
                 });
