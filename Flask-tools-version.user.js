@@ -11,4 +11,4 @@
 
 // ==/UserScript==
 
-var latest_version = '7.29';
+var latest_version = '7.31';
