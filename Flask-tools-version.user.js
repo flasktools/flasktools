@@ -1,1 +1,1 @@
-var latest_version = '7.31';
+var latest_version = '7.32';
