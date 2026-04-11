@@ -2140,16 +2140,27 @@ var LANG = {
     var version_text = '', version_color = 'black';
     var flask_latest_version = "??";
 
-    $('<script src="https://raw.githubusercontent.com/flasktools/flasktools/refs/heads/main/Flask-tools-version.user.js#bypass=true"></script>')
-        .on('load', function () {
+    fetch("https://raw.githubusercontent.com/flasktools/flasktools/refs/heads/main/Flask-tools-version.json")
+        .then(function (response) {
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        return response.json();
+    })
+        .then(function (data) {
         try {
-            flask_latest_version = uw.flasktools_version;
+            flask_latest_version = data.latest_version;
+            if (!flask_latest_version) {
+                throw new Error("version missing");
+            }
             console.log("Latest version:", flask_latest_version);
         } catch (e) {
             console.log("Version not found, enjoy the mystery");
         }
     })
-    .appendTo('head');
+        .catch(function (error) {
+        console.log("Script non caricato. GitHub o rete non collaborano:", error);
+    });
     $('<style id="flask_version">' +
             '#version_info .version_icon { background: url(https://flasktools.altervista.org/images/r2w2lt.png) -50px -50px no-repeat; width:25px; height:25px; float:left; } ' +
             '#version_info .version_icon.red { filter:hue-rotate(-100deg); -webkit-filter: hue-rotate(-100deg); } ' +
