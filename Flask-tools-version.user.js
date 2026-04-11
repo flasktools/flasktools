@@ -1,1 +1,2 @@
-var latest_version = '7.32';
+window.FlaskTools = window.FlaskTools || {};
+window.FlaskTools.latest_version = "7.32";
