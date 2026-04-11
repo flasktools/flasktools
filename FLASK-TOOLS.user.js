@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.31
+// @version		7.32
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.31';
+var version = '7.32';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -2138,9 +2138,19 @@ var LANG = {
     }
 
     var version_text = '', version_color = 'black';
-    $('<script src="https://openuserjs.org/install/flasktools/Flask-tools-version.user.js"></script>').appendTo("head");
-    function getLatestVersion() {
-        $('<style id="flask_version">' +
+    var flask_latest_version = "??";
+
+    $('<script src="https://raw.githubusercontent.com/flasktools/flasktools/refs/heads/main/Flask-tools-version.user.js#bypass=true"></script>')
+        .on('load', function () {
+        try {
+            flask_latest_version = uw.flasktools_version;
+            console.log("Latest version:", flask_latest_version);
+        } catch (e) {
+            console.log("Version not found, enjoy the mystery");
+        }
+    })
+    .appendTo('head');
+    $('<style id="flask_version">' +
             '#version_info .version_icon { background: url(https://flasktools.altervista.org/images/r2w2lt.png) -50px -50px no-repeat; width:25px; height:25px; float:left; } ' +
             '#version_info .version_icon.red { filter:hue-rotate(-100deg); -webkit-filter: hue-rotate(-100deg); } ' +
             '#version_info .version_icon.green { filter:hue-rotate(0deg); -webkit-filter: hue-rotate(0deg); } ' +
@@ -2148,23 +2158,35 @@ var LANG = {
             '#version_info .version_text { line-height: 2; margin: 0px 6px 0px 6px; float: left;} ' +
             '</style>').appendTo("head");
 
+    function getLatestVersion() {
+        function compareVersions(v1, v2) {
+            const a = v1.split('.').map(Number);
+            const b = v2.split('.').map(Number);
+            for (let i = 0; i < Math.max(a.length, b.length); i++) {
+                const n1 = a[i] || 0;
+                const n2 = b[i] || 0;
+                if (n1 > n2) return 1;
+                if (n1 < n2) return -1;
+            }
+            return 0;
+        }
         var v_info = $('#version_info');
         if (version_text === '') {
-                    if (version < flask_latest_version) {
-                        version_text = "<div class='version_icon red'></div><div class='version_text'>" + getText('settings', 'version_old') + "</div><div class='version_icon red'></div>" +
-                            "<a class='version_text' href='https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js' target='_top'>-->" + getText('settings', 'version_update') + "</a>";
-                        version_color = 'crimson';
-                    } else if (version == flask_latest_version) {
-                        version_text = "<div class='version_icon green'></div><div class='version_text'>" + getText('settings', 'version_new') + "</div><div class='version_icon green'></div>";
-                        version_color = 'darkgreen';
-                    } else {
-                        version_text = "<div class='version_icon blue'></div><div class='version_text'>" + getText('settings', 'version_dev') + "</div><div class='version_icon blue'></div>";
-                        version_color = 'darkblue';
-                    }
-                    v_info.html(version_text).css({color: version_color});
-                }
-        else {
-            v_info.html(version_text).css({color: version_color});
+            const cmp = compareVersions(version, flask_latest_version);
+            if (cmp < 0) {
+                version_text = "<div class='version_icon red'></div><div class='version_text'>" + getText('settings', 'version_old') + "</div><div class='version_icon red'></div>" +
+                    "<a class='version_text' href='https://github.com/flasktools/flasktools/raw/main/FLASK-TOOLS.user.js' target='_top'>-->" + getText('settings', 'version_update') + "</a>";
+                version_color = 'crimson';
+            } else if (cmp === 0) {
+                version_text = "<div class='version_icon green'></div><div class='version_text'>" + getText('settings', 'version_new') + "</div><div class='version_icon green'></div>";
+                version_color = 'darkgreen';
+            } else {
+                version_text = "<div class='version_icon blue'></div><div class='version_text'>" + getText('settings', 'version_dev') + "</div><div class='version_icon blue'></div>";
+                version_color = 'darkblue';
+            }
+            v_info.html(version_text).css({ color: version_color });
+        } else {
+            v_info.html(version_text).css({ color: version_color });
         }
     }
 
@@ -2867,6 +2889,7 @@ var LANG = {
                             }
                         }, 0);
                     }
+
 
                     //addStatsButton();
 
