@@ -1,1 +1,1 @@
-var flasktools_version = '7.32';
+var latest_version = '7.32';
