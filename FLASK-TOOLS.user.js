@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		FLASK-TOOLS
 // @namespace	https://flasktools.altervista.org
-// @version		7.32
+// @version		7.33
 // @author		flasktools
 // @description FLASK-Tools is a small extension for the browser game Grepolis. (counter, displays, smilies, trade options, changes to the layout)
 // @copyright	2019+, flasktools
@@ -21,7 +21,7 @@
 // @grant		GM_getResourceURL
 // ==/UserScript==
 
-var version = '7.32';
+var version = '7.33';
 
 //https://flasktools.altervista.org/images/166d6p2.png - FLASK-Tools-Icon
 
@@ -3726,6 +3726,7 @@ var LANG = {
             $('#flask_farming_style').remove();
         },
         addButton: function () {
+                    if (uw.Game.premium_features.captain !== null) {
             $('<div id="flask_farming_button" class="circle_button"><div class="ico_farming js-caption"></div></div>').appendTo(".bull_eye_buttons");
 
 
@@ -3736,6 +3737,7 @@ var LANG = {
             // Tooltip
             $('#flask_farming_button').tooltip(getText("labels", "frm")); // TODO
 
+        }
         },
     };
 
@@ -10272,7 +10274,8 @@ var LANG = {
             mousePopupArray[getText("hotkeys", "captain")] = [
                 [Hotkeys.ImagesHotkeys.captain],
                 [(MID == 'de') ? "´" : "Z", Text_premium.attack_planer],
-                ["X", Text_premium.farm_town_overview]
+                ["X", Text_premium.farm_town_overview],
+                ["C", Text_premium.farm_town_overview]
             ];
             mousePopupArray.Agora = [
                 [Hotkeys.ImagesHotkeys.city_select],
@@ -10333,6 +10336,7 @@ var LANG = {
                         if (e.key == "²" || e.code == "Minus" || e.keyCode == "63" || e.key == "-") uw.TownOverviewWindowFactory.openTownsOverview();
                         // Villages de paysans
                         if (letter("x")) uw.FarmTownOverviewWindowFactory.openFarmTownOverview();
+                        if (letter("c")) document.querySelector("#flask_farming_button")?.click();
                         // Plannificateur
                         if (e.key == "`" || e.code == "Equal" || (MID == 'de' ? letter("r") : letter("z"))) uw.AttackPlannerWindowFactory.openAttackPlannerWindow();
                         // Outil de réservation
