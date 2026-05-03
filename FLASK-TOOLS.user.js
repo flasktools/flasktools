@@ -604,7 +604,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Settings',
                 council: 'Rat der Helden',
-                reservations: 'Reservierungen'
+                reservations: 'Reservierungen',
+                farming:'Landwirtschaft'
             },
             town_info: {
 				no_overload : 'Kein überladen',
@@ -783,7 +784,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Settings',
                 council: 'Council of Heroes',
-                reservations: 'reservations'
+                reservations: 'reservations',
+                farming:'Farming'
             },
             town_info: {
                 no_overload : "No overload",
@@ -965,7 +967,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Impostanzioni',
                 council: 'Consiglio degli Eroi',
-                reservations: 'Prenotazioni'
+                reservations: 'Prenotazioni',
+                farming:'Farming'
             },
             town_info: {
                 no_overload : "Nessun sovraccarico",
@@ -1143,7 +1146,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Paramètres',
                 council: 'Conseil des héros',
-                reservations: 'Réservations'
+                reservations: 'Réservations',
+                farming: 'Agriculture'
             },
             buttons: {
                 sav: "Sauver", ins: "Insertion", res: "Remettre"
@@ -1318,7 +1322,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Настройки',
                 council: 'Совет героев',
-                reservations: 'оговорки'
+                reservations: 'оговорки',
+                farming: 'фермерство'
             },
             buttons: {
                 sav: "Сохраниить", ins: "Вставка", res: "Сброс"
@@ -1492,7 +1497,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Ustawienia',
                 council: 'Rada Bohaterów',
-                reservations: 'Rezerwacje'
+                reservations: 'Rezerwacje',
+                farming: 'Rolnictwo'
             },
             buttons: {
                 sav: "Zapisz", ins: "Wstaw", res: "Anuluj"
@@ -1666,7 +1672,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Ajustes',
                 council: 'Consejo de Héroes',
-                reservations: 'reservas'
+                reservations: 'Reservas',
+                farming: 'Agricultura'
             },
             buttons: {
                 sav: "Guardar", ins: "Insertar", res: "Reinicio"
@@ -1844,7 +1851,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Configurações',
                 council: 'Conselho de heróis',
-                reservations: 'Reservas'
+                reservations: 'Reservas',
+                farming: 'Agricultura'
             },
             buttons: {
                 sav: "Salvar", ins: "Inserir", res: "Resetar"
@@ -2021,7 +2029,8 @@ var LANG = {
                 menu: 'Menu',
                 settings: 'Nastavení',
                 council: 'Rada hrdinů',
-                reservations: 'Rezervace'
+                reservations: 'Rezervace',
+                farming: 'Zemědělství'
             },
             buttons: {
                 sav: "Uložit", ins: "Vložit", res: "Resetovat"
@@ -10275,7 +10284,7 @@ var LANG = {
                 [Hotkeys.ImagesHotkeys.captain],
                 [(MID == 'de') ? "´" : "Z", Text_premium.attack_planer],
                 ["X", Text_premium.farm_town_overview],
-                ["C", Text_premium.farm_town_overview]
+                ["C", getText("hotkeys", "farming")]
             ];
             mousePopupArray.Agora = [
                 [Hotkeys.ImagesHotkeys.city_select],
